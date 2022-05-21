@@ -2,8 +2,10 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <h1>heyyyyy, this is a manufacturing website</h1>
+    <div>
+      <h1 className="text-3xl font-bold">
+        heyyyyy, this is a manufacturing website
+      </h1>
     </div>
   );
 }
