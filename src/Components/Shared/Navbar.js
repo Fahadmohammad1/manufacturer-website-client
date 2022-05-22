@@ -62,7 +62,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div class="navbar-end hidden lg:flex">
-        <Link to="/" class="btn">
+        <Link to="/login" class="btn">
           Login
         </Link>
         <div class="dropdown dropdown-end">
