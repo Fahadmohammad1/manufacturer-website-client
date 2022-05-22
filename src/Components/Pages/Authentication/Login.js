@@ -1,27 +1,37 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+// import { Link } from "react-router-dom";
 
 const Login = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  console.log(errors);
+  const onSubmit = (e) => {};
   return (
-    <div class="h-screen flex">
-      <div class="flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center">
+    <div className="h-screen flex">
+      <div className="flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center">
         <div>
-          <h1 class="text-white font-bold text-4xl font-sans">GoFinance</h1>
-          <p class="text-white mt-1">
+          <h1 className="text-white font-bold text-4xl font-sans">GoFinance</h1>
+          <p className="text-white mt-1">
             The most popular peer to peer lending at SEA
           </p>
           <button
             type="submit"
-            class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+            className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
           >
             Read More
           </button>
         </div>
       </div>
-      <div class="flex w-1/2 justify-center items-center bg-white">
-        <form class="bg-white">
+      <div className="flex w-1/2 justify-center items-center bg-white">
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
           <p class="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
-          <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+          <div class="flex items-center border-2 py-2 px-3 rounded-2xl ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 text-gray-400"
@@ -36,14 +46,31 @@ const Login = () => {
                 d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
               />
             </svg>
+            {/* <label className="label">
+              <span className="label-text text-white">Email</span>
+            </label> */}
             <input
-              class="pl-2 outline-none border-none"
-              type="text"
-              name=""
-              id=""
-              placeholder="Email Address"
+              className="pl-2 outline-none border-none"
+              {...register("Email", {
+                required: {
+                  value: true,
+                  message: "Enter email address",
+                },
+                pattern: {
+                  value: /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/,
+                  message: "Enter a valid email",
+                },
+              })}
             />
           </div>
+          <label className="label">
+            {errors.Email?.type === "required" && (
+              <p className="text-red-400">{errors.Email.message}</p>
+            )}
+            {errors.Email?.type === "pattern" && (
+              <p className="text-red-400">{errors.Email.message}</p>
+            )}
+          </label>
           <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,23 +84,36 @@ const Login = () => {
                 clip-rule="evenodd"
               />
             </svg>
+            {/* <label className="label">
+              <span className="label-text text-white">Password</span>
+            </label> */}
             <input
-              class="pl-2 outline-none border-none"
-              type="text"
-              name=""
-              id=""
-              placeholder="Password"
+              type="password"
+              className="pl-2 outline-none border-none"
+              {...register("Password", {
+                required: {
+                  value: true,
+                  message: "Enter valid password",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Enter 6 digit password",
+                },
+              })}
             />
           </div>
-          <button
+          <label className="label">
+            {errors.Password?.type === "required" && (
+              <p className="text-red-400">{errors.Password.message}</p>
+            )}
+            {errors.Password?.type === "minLength" && (
+              <p className="text-red-400">{errors.Password.message}</p>
+            )}
+          </label>
+          <input
+            className="block w-full bg-indigo-600  py-2 rounded-2xl text-white font-semibold mb-2"
             type="submit"
-            class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
-          >
-            Login
-          </button>
-          <span class="text-sm ml-2 hover:text-blue-500 cursor-pointer">
-            Forgot Password ?
-          </span>
+          />
         </form>
       </div>
     </div>
