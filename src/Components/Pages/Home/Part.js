@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Part = ({ part }) => {
   const { image, price, name } = part;
+  const navigate = useNavigate();
   return (
     <div>
       <div class="flex flex-col items-center justify-center max-w-sm mx-auto">
@@ -21,7 +23,10 @@ const Part = ({ part }) => {
             <span class="font-bold text-gray-800 dark:text-gray-200">
               ${price}
             </span>
-            <button class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">
+            <button
+              onClick={() => navigate("/purchase")}
+              class="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none"
+            >
               purchase now
             </button>
           </div>
