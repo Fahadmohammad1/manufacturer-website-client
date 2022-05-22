@@ -1,5 +1,6 @@
 // import React, { useState } from "react";
 import { useQuery } from "react-query";
+import Loading from "../../Shared/Loading";
 import Part from "./Part";
 
 const Parts = () => {
@@ -10,7 +11,7 @@ const Parts = () => {
   );
 
   if (isLoading) {
-    return <p>please wait</p>;
+    return <Loading></Loading>;
   }
   console.log(parts);
 
