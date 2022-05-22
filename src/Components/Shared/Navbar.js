@@ -4,7 +4,7 @@ import logo from "../../Assets/images/logo.png";
 
 const Navbar = () => {
   return (
-    <div class="navbar bg-base-100">
+    <div class="navbar bg-base-100 container mx-auto">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -28,45 +28,15 @@ const Navbar = () => {
             class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <Link to="/">Item 1</Link>
             </li>
             <li>
-              <a>Item 2</a>
+              <Link to="/">Item 2</Link>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link to="/">Item 3</Link>
             </li>
           </ul>
-          {/* <div
-            class=" menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            tabIndex="0"
-          >
-            <a class="btn">Login</a>
-            <div class="dropdown dropdown-end">
-              <label tabindex="1" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                  <img src="https://api.lorem.space/image/face?hash=33791" />
-                </div>
-              </label>
-              <ul
-                tabindex="1"
-                class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a class="justify-between">
-                    Profile
-                    <span class="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div>
-          </div> */}
         </div>
         <div class="btn btn-ghost normal-case text-xl">
           <div className="w-12">
@@ -80,23 +50,25 @@ const Navbar = () => {
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
           <li>
-            <a>Item 1</a>
+            <Link to="/">Item 1</Link>
           </li>
           <li>
-            <a>Item 2</a>
+            <Link to="/">Item 2</Link>
           </li>
 
           <li>
-            <a>Item 3</a>
+            <Link to="/">Item 3</Link>
           </li>
         </ul>
       </div>
       <div class="navbar-end hidden lg:flex">
-        <a class="btn">Login</a>
+        <Link to="/" class="btn">
+          Login
+        </Link>
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=33791" />
+              <img src="https://api.lorem.space/image/face?hash=33791" alt="" />
             </div>
           </label>
           <ul
@@ -104,16 +76,16 @@ const Navbar = () => {
             class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a class="justify-between">
+              <Link to="/" class="justify-between">
                 Profile
                 <span class="badge">New</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a>Settings</a>
+              <Link to="/">Settings</Link>
             </li>
             <li>
-              <a>Logout</a>
+              <Link to="/">Logout</Link>
             </li>
           </ul>
         </div>
