@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Graphics Card",
+    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
+    "description": "",
+    "price": 230,
+    "order_quantity": 200,
+    "available_quantity": 500
+  },
+  {
+    "id": 1,
+    "name": "Graphics Card",
+    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
+    "description": "",
+    "price": 230,
+    "order_quantity": 200,
+    "available_quantity": 500
+  },
+  {
+    "id": 1,
+    "name": "Graphics Card",
+    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
+    "description": "",
+    "price": 230,
+    "order_quantity": 200,
+    "available_quantity": 500
+  },
+  {
+    "id": 1,
+    "name": "Graphics Card",
+    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
+    "description": "",
+    "price": 230,
+    "order_quantity": 200,
+    "available_quantity": 500
+  },
+  {
+    "id": 1,
+    "name": "Graphics Card",
+    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
+    "description": "",
+    "price": 230,
+    "order_quantity": 200,
+    "available_quantity": 500
+  },
+  {
+    "id": 1,
+    "name": "Graphics Card",
+    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
+    "description": "",
+    "price": 230,
+    "order_quantity": 200,
+    "available_quantity": 500
+  }
+]
