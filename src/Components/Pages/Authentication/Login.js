@@ -6,6 +6,7 @@ import auth from "../../../firebase.init";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 
 const Login = () => {
   const [user] = useAuthState(auth);
@@ -16,9 +17,11 @@ const Login = () => {
     handleSubmit,
     reset,
   } = useForm();
+  const [signInWithEmailAndPassword, eUser, eLoading, eError] =
+    useSignInWithEmailAndPassword(auth);
 
   const onSubmit = (data) => {
-    console.log(data);
+    signInWithEmailAndPassword(data.Email, data.Password);
     reset();
   };
   return (

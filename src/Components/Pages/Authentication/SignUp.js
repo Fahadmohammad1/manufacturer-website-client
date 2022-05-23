@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 const SignUp = () => {
   const {
@@ -11,6 +12,8 @@ const SignUp = () => {
     handleSubmit,
     reset,
   } = useForm();
+
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
@@ -65,6 +68,7 @@ const SignUp = () => {
                 Github
               </button>
               <button
+                onClick={() => signInWithGoogle()}
                 className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                 type="button"
               >
