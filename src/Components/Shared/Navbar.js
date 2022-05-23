@@ -1,10 +1,18 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import logo from "../../Assets/images/logo.png";
+import auth from "../../firebase.init";
+import Loading from "./Loading";
 
 const Navbar = () => {
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
-    <div className="navbar bg-base-100 sticky top-0 z-40 ">
+    <div className="navbar bg-base-100 sticky top-0 z-40">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -71,7 +79,7 @@ const Navbar = () => {
         <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=33791" alt="" />
+              <img src={user?.photoURL} alt="" />
             </div>
           </label>
           <ul

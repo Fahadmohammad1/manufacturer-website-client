@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 // import { Link } from "react-router-dom";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [user] = useAuthState(auth);
@@ -30,8 +31,41 @@ const Login = () => {
       </div>
       <div className="flex w-1/2 justify-center items-center bg-white">
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-          <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
-          <p class="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
+          <h1 class="text-gray-800 font-bold text-2xl">
+            Login to your account
+          </h1>
+          <div>
+            <Link to="/signup">
+              <small>Don't have an Account?</small>
+              <button class="btn btn-link">Sign Up</button>
+            </Link>
+          </div>
+          <div className="flex justify-center">
+            <button
+              className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
+              type="button"
+            >
+              <img
+                alt="..."
+                className="w-5 mr-1"
+                src="https://demos.creative-tim.com/notus-js/assets/img/github.svg"
+              />
+              Github
+            </button>
+            <button
+              className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
+              type="button"
+            >
+              <img
+                alt="..."
+                className="w-5 mr-1"
+                src="https://demos.creative-tim.com/notus-js/assets/img/google.svg"
+              />
+              Google{" "}
+            </button>
+          </div>
+
+          <div class="divider">OR</div>
           <div class="flex items-center border-2 border-orange-500 py-2 px-3 rounded-2xl ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,9 +81,6 @@ const Login = () => {
                 d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
               />
             </svg>
-            {/* <label className="label">
-              <span className="label-text text-white">Email</span>
-            </label> */}
             <input
               className="pl-2 outline-none border-none bg-[#E0E0E0]"
               {...register("Email", {
@@ -85,9 +116,7 @@ const Login = () => {
                 clip-rule="evenodd"
               />
             </svg>
-            {/* <label className="label">
-              <span className="label-text text-white">Password</span>
-            </label> */}
+
             <input
               type="password"
               className="pl-2 outline-none border-none bg-[#E0E0E0]"
@@ -112,7 +141,7 @@ const Login = () => {
             )}
           </label>
           <input
-            className="block w-full bg-indigo-600  py-2 rounded-2xl text-white font-semibold mb-2"
+            className="block w-full bg-indigo-600 py-2 rounded-2xl text-white font-semibold mb-1"
             type="submit"
           />
         </form>
