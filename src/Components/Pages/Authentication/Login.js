@@ -5,16 +5,22 @@ import auth from "../../../firebase.init";
 // import { Link } from "react-router-dom";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 
 const Login = () => {
   const [user] = useAuthState(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
-  const onSubmit = (e) => {};
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <div className="h-screen flex container mx-auto">
       <div className="flex w-1/2 bg-gradient-to-tr from-[#F8941E] to-[#EDAC60] justify-around items-center">
@@ -53,6 +59,9 @@ const Login = () => {
               Github
             </button>
             <button
+              onClick={() => {
+                signInWithGoogle();
+              }}
               className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
               type="button"
             >
@@ -82,6 +91,8 @@ const Login = () => {
               />
             </svg>
             <input
+              type="email"
+              placeholder="Email"
               className="pl-2 outline-none border-none bg-[#E0E0E0]"
               {...register("Email", {
                 required: {
@@ -119,6 +130,7 @@ const Login = () => {
 
             <input
               type="password"
+              placeholder="Password"
               className="pl-2 outline-none border-none bg-[#E0E0E0]"
               {...register("Password", {
                 required: {
