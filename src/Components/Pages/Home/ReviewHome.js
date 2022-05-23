@@ -3,7 +3,7 @@ import React from "react";
 const ReviewHome = ({ review }) => {
   return (
     <div>
-      <div class="max-w-md py-4 px-8 bg-white shadow-xl rounded-lg my-20">
+      <div class="max-w-md py-4 px-8 bg-white shadow-xl rounded-lg my-20 border-r-2 border-t-2 border-[#EDAC60]">
         <div class="flex justify-center md:justify-end -mt-16">
           <img
             class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"

@@ -7,9 +7,10 @@ import "./Login.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import Loading from "../../Shared/Loading";
 
 const Login = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const location = useLocation();
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -24,6 +25,10 @@ const Login = () => {
   } = useForm();
   const [signInWithEmailAndPassword, eUser, eLoading, eError] =
     useSignInWithEmailAndPassword(auth);
+
+  if (loading || eLoading) {
+    return <Loading />;
+  }
 
   if (user) {
     navigate(from, { replace: true });
