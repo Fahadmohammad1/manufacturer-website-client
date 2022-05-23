@@ -64,7 +64,7 @@ const Navbar = () => {
       <div className="navbar-end hidden lg:flex">
         <Link
           to="/login"
-          className="btn btn-sm bg-gradient-to-r from-secondary to-primary"
+          className="btn bg-gradient-to-r text-white from-[#F8941E] to-[#EDAC60]"
         >
           Login
         </Link>

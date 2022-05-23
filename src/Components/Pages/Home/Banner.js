@@ -18,7 +18,9 @@ const Banner = () => {
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
             a id nisi.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <button className="btn bg-gradient-to-r from-[#F8941E] to-[#EDAC60] ">
+            Get Started
+          </button>
         </div>
       </div>
     </div>

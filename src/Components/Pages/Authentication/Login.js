@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 // import { Link } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
   const [user] = useAuthState(auth);
@@ -15,7 +16,7 @@ const Login = () => {
   const onSubmit = (e) => {};
   return (
     <div className="h-screen flex container mx-auto">
-      <div className="flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center">
+      <div className="flex w-1/2 bg-gradient-to-tr from-[#F8941E] to-[#EDAC60] justify-around items-center">
         <div>
           <h1 className="text-white font-bold text-4xl font-sans">GoFinance</h1>
           <p className="text-white mt-1">The most popular brand in Asia</p>
@@ -28,10 +29,10 @@ const Login = () => {
         </div>
       </div>
       <div className="flex w-1/2 justify-center items-center bg-white">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
           <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Again!</h1>
           <p class="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
-          <div class="flex items-center border-2 py-2 px-3 rounded-2xl ">
+          <div class="flex items-center border-2 border-orange-500 py-2 px-3 rounded-2xl ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 text-gray-400"
@@ -50,7 +51,7 @@ const Login = () => {
               <span className="label-text text-white">Email</span>
             </label> */}
             <input
-              className="pl-2 outline-none border-none"
+              className="pl-2 outline-none border-none bg-[#E0E0E0]"
               {...register("Email", {
                 required: {
                   value: true,
@@ -71,7 +72,7 @@ const Login = () => {
               <p className="text-red-400">{errors.Email.message}</p>
             )}
           </label>
-          <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
+          <div class="flex items-center border-2 border-orange-500 py-2 px-3 rounded-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 text-gray-400"
@@ -89,7 +90,7 @@ const Login = () => {
             </label> */}
             <input
               type="password"
-              className="pl-2 outline-none border-none"
+              className="pl-2 outline-none border-none bg-[#E0E0E0]"
               {...register("Password", {
                 required: {
                   value: true,
