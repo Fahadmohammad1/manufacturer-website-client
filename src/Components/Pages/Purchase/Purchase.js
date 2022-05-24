@@ -20,7 +20,7 @@ const Purchase = () => {
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-7 mx-auto flex flex-col">
           <div class="lg:w-5/6 mx-auto">
-            <div class="rounded-lg h-72 overflow-hidden flex justify-center">
+            <div class="rounded-lg h-80 overflow-hidden flex justify-center">
               <img
                 class="lg:w-3/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
                 alt="hero"
@@ -37,7 +37,7 @@ const Purchase = () => {
                     {user?.email}
                   </h2>
                   <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                  <div>
+                  <form>
                     <div class="form-control w-full max-w-xs">
                       <label class="label">
                         <span class="label-text">Your Address</span>
@@ -80,7 +80,14 @@ const Purchase = () => {
                         <span class="label-text-alt">Alt label</span>
                       </label>
                     </div>
-                  </div>
+                    <div>
+                      <input
+                        type="submit"
+                        value="submit"
+                        class="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"
+                      />
+                    </div>
+                  </form>
                 </div>
               </div>
               <div class="sm:w-2/3 sm:pb-8 lg:border-r-2 mt-4 sm:mt-0 text-center sm:text-left flex items-center justify-center -ml-7">
