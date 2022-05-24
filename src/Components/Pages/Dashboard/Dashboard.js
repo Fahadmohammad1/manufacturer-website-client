@@ -8,6 +8,7 @@ const Dashboard = () => {
       <nav>
         <Link to="/dashboard">Orders</Link>
         <Link to="/dashboard/addReview">Review</Link>
+        <Link to="/dashboard/myProfile">My Profile</Link>
       </nav>
       <Outlet />
     </div>

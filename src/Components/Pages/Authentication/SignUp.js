@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useUpdateProfile } from "react-firebase-hooks/auth";
 
 const SignUp = () => {
+  const [displayName, setDisplayName] = useState("");
+  console.log(displayName);
   const {
     register,
     formState: { errors },
@@ -13,13 +16,21 @@ const SignUp = () => {
     reset,
   } = useForm();
 
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(
+    auth,
+    { sendEmailVerification: true }
+  );
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
   const onSubmit = (data) => {
     createUserWithEmailAndPassword(data.Email, data.Password);
+    if (user) {
+      updateProfile({ displayName });
+    }
     reset();
   };
 
@@ -96,6 +107,12 @@ const SignUp = () => {
                 />
               </svg>
               <input
+                {...register("name", {
+                  onChange: (e) => setDisplayName(e.target.value),
+                  required: {
+                    value: true,
+                  },
+                })}
                 class="pl-2 outline-none border-none bg-[#E0E0E0]"
                 type="text"
                 placeholder="Full name"

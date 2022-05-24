@@ -10,6 +10,8 @@ import RequireAuth from "./Components/Shared/RequireAuth";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
 import MyOrders from "./Components/Pages/Dashboard/MyOrders";
 import AddReview from "./Components/Pages/Dashboard/AddReview";
+import MyProfile from "./Components/Pages/Dashboard/MyProfile";
+import Blog from "./Components/Pages/Blog/Blog";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
         <Route path="/dashboard" element={<Dashboard></Dashboard>}>
           <Route index element={<MyOrders></MyOrders>} />
           <Route path="addReview" element={<AddReview></AddReview>} />
+          <Route path="myProfile" element={<MyProfile></MyProfile>} />
         </Route>
+        <Route path="/blog" element={<Blog></Blog>} />
       </Routes>
       <Footer></Footer>
     </div>

@@ -8,6 +8,7 @@ import Loading from "../../Shared/Loading";
 
 const Purchase = () => {
   const [user] = useAuthState(auth);
+  console.log(user);
   const { id } = useParams();
   const { data: part, isLoading } = useQuery("part", () =>
     fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
