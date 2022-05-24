@@ -2,55 +2,55 @@
   {
     "id": 1,
     "name": "Graphics Card",
-    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
-    "description": "",
-    "price": 230,
-    "order_quantity": 200,
-    "available_quantity": 500
+    "image": "https://global.aorus.com/upload/Product/F_20201230135856TD1TZv.JPG",
+    "description": "This product is to rated product of our company. We suggest our customers to buy this. This is the best quality product in this category.",
+    "price": 430,
+    "order_quantity": 100,
+    "available_quantity": 2500
   },
   {
     "id": 2,
-    "name": "Graphics Card",
-    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
-    "description": "",
+    "name": "Motherboard",
+    "image": "https://www.zdnet.com/a/img/resize/10d35ccbcca9ce25851a492d78ee874d61a415ca/2021/10/27/914ad033-756f-495e-9596-7c7ce93e2248/2021-10-27-09-45-43.jpg?width=1200&height=900&fit=crop&auto=webp",
+    "description": "This product is to rated product of our company. We suggest our customers to buy this. This is the best quality product in this category.",
     "price": 230,
-    "order_quantity": 200,
-    "available_quantity": 500
+    "order_quantity": 150,
+    "available_quantity": 2000
   },
   {
     "id": 3,
-    "name": "Graphics Card",
-    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
-    "description": "",
-    "price": 230,
-    "order_quantity": 200,
-    "available_quantity": 500
+    "name": "RAM",
+    "image": "https://cdn11.bigcommerce.com/s-9w92e86dd0/images/stencil/1280x1280/products/651/5297/apiuyfmnr__40079.1645651647.jpg?c=1",
+    "description": "This product is to rated product of our company. We suggest our customers to buy this. This is the best quality product in this category.",
+    "price": 50,
+    "order_quantity": 800,
+    "available_quantity": 3500
   },
   {
     "id": 4,
-    "name": "Graphics Card",
-    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
-    "description": "",
-    "price": 230,
-    "order_quantity": 200,
-    "available_quantity": 500
+    "name": "SSD",
+    "image": "https://www.tradeinn.com/f/13822/138221728/kingston-snvs-m2-nvme-2tb-ssd-hard-drive.jpg",
+    "description": "This product is to rated product of our company. We suggest our customers to buy this. This is the best quality product in this category.",
+    "price": 40,
+    "order_quantity": 1000,
+    "available_quantity": 5500
   },
   {
     "id": 5,
-    "name": "Graphics Card",
-    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
-    "description": "",
-    "price": 230,
-    "order_quantity": 200,
-    "available_quantity": 500
+    "name": "Hard Disk",
+    "image": "https://www.techlandbd.com/image/cache/catalog/Hard-Disk/Toshiba/laptop/toshiba-1-tb-laptop-hard-disk.jpg-500x500.jpg",
+    "description": "This product is to rated product of our company. We suggest our customers to buy this. This is the best quality product in this category.",
+    "price": 45,
+    "order_quantity": 700,
+    "available_quantity": 3500
   },
   {
     "id": 6,
-    "name": "Graphics Card",
-    "image": "https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg",
-    "description": "",
-    "price": 230,
+    "name": "CPU",
+    "image": "https://www.howtogeek.com/wp-content/uploads/2018/10/cpu_lede.png?height=200p&trim=2,2,2,2&crop=16:9",
+    "description": "This product is to rated product of our company. We suggest our customers to buy this. This is the best quality product in this category.",
+    "price": 300,
     "order_quantity": 200,
-    "available_quantity": 500
+    "available_quantity": 4500
   }
 ]

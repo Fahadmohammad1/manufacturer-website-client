@@ -44,8 +44,8 @@ const Login = () => {
     reset();
   };
   return (
-    <div className="h-screen flex container mx-auto">
-      <div className="flex w-1/2 bg-gradient-to-tr from-[#F8941E] to-[#EDAC60] justify-around items-center">
+    <div className="h-screen lg:flex container mx-auto">
+      <div className="hidden lg:flex w-1/2 bg-gradient-to-tr from-[#F8941E] to-[#EDAC60] justify-around items-center">
         <div>
           <h1 className="text-white font-bold text-4xl font-sans">GoFinance</h1>
           <p className="text-white mt-1">The most popular brand in Asia</p>
@@ -57,12 +57,12 @@ const Login = () => {
           </button>
         </div>
       </div>
-      <div className="flex w-1/2 justify-center items-center bg-white">
+      <div className="mx-auto flex w-1/2 justify-center items-center bg-white mt-7 lg:mt-0">
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-          <h1 class="text-gray-800 font-bold text-2xl">
+          <h1 class="text-gray-800 font-bold text-2xl text-center">
             Login to your account
           </h1>
-          <div>
+          <div className="text-center">
             <Link to="/signup">
               <small>Don't have an Account?</small>
               <button class="btn btn-link">Sign Up</button>

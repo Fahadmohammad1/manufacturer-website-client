@@ -24,7 +24,7 @@ const SignUp = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto">
       <div class="h-screen md:flex">
         <div class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
           <div>
@@ -46,13 +46,13 @@ const SignUp = () => {
         </div>
         <div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
           <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-            <h1 class="text-gray-800 font-bold text-2xl">
-              Login to your account
+            <h1 class="text-gray-800 font-bold text-2xl text-center">
+              Create New Account
             </h1>
-            <div>
-              <Link to="/signup">
-                <small>Don't have an Account?</small>
-                <button class="btn btn-link">Sign Up</button>
+            <div className="text-center">
+              <Link to="/login">
+                <small>Already have an Account?</small>
+                <button class="btn btn-link">Login</button>
               </Link>
             </div>
             <div className="flex justify-center">
