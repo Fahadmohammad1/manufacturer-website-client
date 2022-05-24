@@ -7,6 +7,9 @@ import Footer from "./Components/Shared/Footer";
 import Navbar from "./Components/Shared/Navbar";
 import SignUp from "./Components/Pages/Authentication/SignUp";
 import RequireAuth from "./Components/Shared/RequireAuth";
+import Dashboard from "./Components/Pages/Dashboard/Dashboard";
+import MyOrders from "./Components/Pages/Dashboard/MyOrders";
+import AddReview from "./Components/Pages/Dashboard/AddReview";
 
 function App() {
   return (
@@ -24,6 +27,10 @@ function App() {
         />
         <Route path="/login" element={<Login></Login>} />
         <Route path="/signup" element={<SignUp></SignUp>} />
+        <Route path="/dashboard" element={<Dashboard></Dashboard>}>
+          <Route index element={<MyOrders></MyOrders>} />
+          <Route path="addReview" element={<AddReview></AddReview>} />
+        </Route>
       </Routes>
       <Footer></Footer>
     </div>

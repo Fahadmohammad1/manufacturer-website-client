@@ -22,7 +22,7 @@ const SignUp = () => {
     createUserWithEmailAndPassword(data.Email, data.Password);
     reset();
   };
-  console.log(user);
+
   return (
     <div>
       <div class="h-screen md:flex">

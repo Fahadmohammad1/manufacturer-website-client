@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -26,12 +26,17 @@ const Login = () => {
   const [signInWithEmailAndPassword, eUser, eLoading, eError] =
     useSignInWithEmailAndPassword(auth);
 
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [from, navigate, user]);
+  // if (user) {
+  //   navigate(from, { replace: true });
+  // }
+
   if (loading || eLoading) {
     return <Loading />;
-  }
-
-  if (user) {
-    navigate(from, { replace: true });
   }
 
   const onSubmit = (data) => {

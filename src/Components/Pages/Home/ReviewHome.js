@@ -13,34 +13,39 @@ const ReviewHome = ({ review }) => {
         </div>
         <div>
           <h2 class="text-gray-800 text-3xl font-semibold">
-            <div class="rating">
+            {/* <div class="rating">
               <input
+                defaultChecked
                 type="radio"
                 name="rating-2"
                 class="mask mask-star-2 bg-orange-400"
               />
               <input
+                defaultChecked
                 type="radio"
                 name="rating-2"
                 class="mask mask-star-2 bg-orange-400"
                 checked
               />
               <input
+                defaultChecked
                 type="radio"
                 name="rating-2"
                 class="mask mask-star-2 bg-orange-400"
               />
               <input
+                defaultChecked
                 type="radio"
                 name="rating-2"
                 class="mask mask-star-2 bg-orange-400"
               />
               <input
+                defaultChecked
                 type="radio"
                 name="rating-2"
                 class="mask mask-star-2 bg-orange-400"
               />
-            </div>
+            </div> */}
           </h2>
           <p class="mt-2 text-gray-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
