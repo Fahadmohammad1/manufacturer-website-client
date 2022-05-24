@@ -1,23 +1,34 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading";
 
 const Purchase = () => {
   const [user] = useAuthState(auth);
+  const { id } = useParams();
+  const { data: part, isLoading } = useQuery("part", () =>
+    fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <section class="text-gray-600 body-font">
-        <div class="container px-5 py-16 mx-auto flex flex-col">
+        <div class="container px-5 py-7 mx-auto flex flex-col">
           <div class="lg:w-5/6 mx-auto">
             <div class="rounded-lg h-72 overflow-hidden flex justify-center">
               <img
                 class="lg:w-3/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
                 alt="hero"
-                src="https://i.pcmag.com/imagery/reviews/05dlxpTWj83p24d3EclZBw3-23..v1569469949.jpg"
+                src={part.image}
               />
             </div>
             <div class="flex flex-col sm:flex-row mt-6">
-              <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8 order-2">
+              <div class="sm:w-1/3 text-center sm:pb-8 order-2">
                 <div class="w-16 h-16 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
                   <img src={user?.photoURL} alt="user" />
                 </div>
@@ -72,13 +83,25 @@ const Purchase = () => {
                   </div>
                 </div>
               </div>
-              <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left flex items-center">
+              <div class="sm:w-2/3 sm:pb-8 lg:border-r-2 mt-4 sm:mt-0 text-center sm:text-left flex items-center justify-center -ml-7">
                 <div class="card max-w-lg bg-base-100 shadow-xl mb-8 lg:mb-0">
                   <div class="card-body">
-                    <h2 class="card-title">Card title!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <div class="card-actions justify-end">
-                      <button class="btn btn-primary">Buy Now</button>
+                    <h2 class="card-title">
+                      Category:
+                      <span className="font-bold text-2xl">{part.name}</span>
+                    </h2>
+                    <p>{part.description}</p>
+                    <div>
+                      <p className="font-bold">
+                        Per Unit Price: $<span>{part.price}</span>
+                      </p>
+                      <p className="font-bold">
+                        Minimum Order Quantity: $
+                        <span>{part.order_quantity}</span>
+                      </p>
+                      <p className="font-bold">
+                        Per Unit Price: $<span>{part.price}</span>
+                      </p>
                     </div>
                   </div>
                 </div>
