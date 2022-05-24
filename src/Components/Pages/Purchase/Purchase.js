@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
@@ -8,7 +8,10 @@ import Loading from "../../Shared/Loading";
 
 const Purchase = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+  const [disabled, setDisabled] = useState(true);
+  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(0);
+
   const { id } = useParams();
   const { data: part, isLoading } = useQuery("part", () =>
     fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
@@ -19,12 +22,26 @@ const Purchase = () => {
     handleSubmit,
     reset,
   } = useForm();
+
+  useEffect(() => {
+    // if (quantity > part.available_quantity || quantity < part.order_quantity) {
+    //   console.log("limit is limit");
+    //   setDisabled(false);
+    // }
+    console.log(part);
+    if (quantity < part.available_quantity || quantity > part.order_quantity) {
+      console.log("limit is limit");
+      setDisabled(false);
+    }
+  }, [quantity]);
   if (isLoading) {
     return <Loading />;
   }
-  console.log(errors);
+
+  console.log(price);
   const onSubmit = (data) => {
     console.log(data);
+    reset();
   };
 
   return (
@@ -114,19 +131,54 @@ const Purchase = () => {
                             <span class="label-text">Order Quantity</span>
                           </label>
                           <input
+                            {...register("quantity", {
+                              onChange: (e) => {
+                                setQuantity(e.target.value);
+                                setPrice(parseInt(e.target.value * part.price));
+                              },
+                              required: {
+                                value: true,
+                                message: "Please Enter Quantity",
+                              },
+                              max: {
+                                value: `${part.available_quantity}`,
+                                message: `please select less then ${part.available_quantity}`,
+                              },
+                              min: {
+                                value: `${part.order_quantity}`,
+                                message: `minimum order quantity ${part.order_quantity}`,
+                              },
+                            })}
                             type="number"
-                            placeholder="Type here"
+                            placeholder="Enter Quantity"
                             class="input input-bordered w-full max-w-xs"
                           />
-                          <label class="label"></label>
+                          <label class="label">
+                            {errors.quantity?.type === "required" && (
+                              <span class="label-text-alt text-red-600">
+                                {errors?.quantity.message}
+                              </span>
+                            )}
+                            {errors.quantity?.type === "max" && (
+                              <span class="label-text-alt text-red-600">
+                                {errors?.quantity.message}
+                              </span>
+                            )}
+                            {errors.quantity?.type === "min" && (
+                              <span class="label-text-alt text-red-600">
+                                {errors?.quantity.message}
+                              </span>
+                            )}
+                          </label>
                         </div>
                         <div class="form-control w-full max-w-xs">
                           <label class="label">
                             <span class="label-text">Total Price</span>
                           </label>
                           <input
-                            type="text"
-                            placeholder="Type here"
+                            type="number"
+                            value={price}
+                            readOnly
                             class="input input-bordered w-full max-w-xs"
                           />
                           <label class="label"></label>
@@ -135,6 +187,7 @@ const Purchase = () => {
                     </div>
                     <div>
                       <input
+                        disabled={disabled}
                         type="submit"
                         value="submit"
                         class="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"
@@ -156,11 +209,12 @@ const Purchase = () => {
                         Per Unit Price: $<span>{part.price}</span>
                       </p>
                       <p className="font-bold">
-                        Minimum Order Quantity: $
+                        Minimum Order Quantity: {""}
                         <span>{part.order_quantity}</span>
                       </p>
                       <p className="font-bold">
-                        Per Unit Price: $<span>{part.price}</span>
+                        Available Quantity: {""}
+                        <span>{part.available_quantity}</span>
                       </p>
                     </div>
                   </div>
