@@ -7,7 +7,7 @@ const Parts = () => {
   //   const [parts, setParts] = useState([]);
 
   const { data: parts, isLoading } = useQuery("parts", () =>
-    fetch("data.json").then((res) => res.json())
+    fetch("http://localhost:5000/parts").then((res) => res.json())
   );
 
   if (isLoading) {
@@ -21,7 +21,7 @@ const Parts = () => {
       </h2>
       <div className="grid lg:grid-cols-3 gap-y-10">
         {parts.map((part) => (
-          <Part part={part} key={part.id}></Part>
+          <Part part={part} key={part._id}></Part>
         ))}
       </div>
     </div>
