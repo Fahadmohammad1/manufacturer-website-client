@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import auth from "../../../firebase.init";
@@ -11,9 +12,19 @@ const Purchase = () => {
   const { data: part, isLoading } = useQuery("part", () =>
     fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
   );
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
   if (isLoading) {
     return <Loading />;
   }
+  console.log(errors);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <div>
@@ -27,8 +38,8 @@ const Purchase = () => {
                 src={part.image}
               />
             </div>
-            <div class="flex flex-col sm:flex-row mt-6">
-              <div class="sm:w-1/3 text-center sm:pb-8 order-2">
+            <div class="flex flex-col sm:flex-row mt-6 gap-10">
+              <div class="sm:w-auto text-center sm:pb-8 order-2">
                 <div class="w-16 h-16 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
                   <img src={user?.photoURL} alt="user" />
                 </div>
@@ -37,48 +48,89 @@ const Purchase = () => {
                     {user?.email}
                   </h2>
                   <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                  <form>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">Your Address</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Type here"
-                        class="input input-bordered w-full max-w-xs"
-                      />
-                      <label class="label">
-                        <span class="label-text-alt">Alt label</span>
-                        <span class="label-text-alt">Alt label</span>
-                      </label>
-                    </div>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">Phone Number</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Type here"
-                        class="input input-bordered w-full max-w-xs"
-                      />
-                      <label class="label">
-                        <span class="label-text-alt">Alt label</span>
-                        <span class="label-text-alt">Alt label</span>
-                      </label>
-                    </div>
-                    <div class="form-control w-full max-w-xs">
-                      <label class="label">
-                        <span class="label-text">Order Quantity</span>
-                      </label>
-                      <input
-                        type="number"
-                        placeholder="Type here"
-                        class="input input-bordered w-full max-w-xs"
-                      />
-                      <label class="label">
-                        <span class="label-text-alt">Alt label</span>
-                        <span class="label-text-alt">Alt label</span>
-                      </label>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="lg:flex gap-4">
+                      <div>
+                        <div class="form-control w-full max-w-xs">
+                          <label class="label">
+                            <span class="label-text">Your Address</span>
+                          </label>
+                          <input
+                            type="text"
+                            {...register("address", {
+                              required: {
+                                value: true,
+                                message: "Enter Delivery Address",
+                              },
+                            })}
+                            placeholder="Address"
+                            class="input input-bordered w-full max-w-xs"
+                          />
+                          <label class="label">
+                            {errors.address?.type === "required" && (
+                              <span class="label-text-alt text-red-600">
+                                {errors?.address.message}
+                              </span>
+                            )}
+                          </label>
+                        </div>
+                        <div class="form-control w-full max-w-xs">
+                          <label class="label">
+                            <span class="label-text">Phone Number</span>
+                          </label>
+                          <input
+                            type="number"
+                            {...register("phone", {
+                              required: {
+                                value: true,
+                                message: "Enter Phone Number",
+                              },
+                              minLength: {
+                                value: 11,
+                                message: "11 digit Number Required",
+                              },
+                            })}
+                            placeholder="+880"
+                            class="input input-bordered w-full max-w-xs"
+                          />
+                          <label class="label">
+                            {errors.phone?.type === "required" && (
+                              <span class="label-text-alt text-red-600">
+                                {errors?.phone.message}
+                              </span>
+                            )}
+                            {errors.phone?.type === "minLength" && (
+                              <span class="label-text-alt text-red-600">
+                                {errors?.phone.message}
+                              </span>
+                            )}
+                          </label>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-control w-full max-w-xs">
+                          <label class="label">
+                            <span class="label-text">Order Quantity</span>
+                          </label>
+                          <input
+                            type="number"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs"
+                          />
+                          <label class="label"></label>
+                        </div>
+                        <div class="form-control w-full max-w-xs">
+                          <label class="label">
+                            <span class="label-text">Total Price</span>
+                          </label>
+                          <input
+                            type="text"
+                            placeholder="Type here"
+                            class="input input-bordered w-full max-w-xs"
+                          />
+                          <label class="label"></label>
+                        </div>
+                      </div>
                     </div>
                     <div>
                       <input
@@ -90,7 +142,7 @@ const Purchase = () => {
                   </form>
                 </div>
               </div>
-              <div class="sm:w-2/3 sm:pb-8 lg:border-r-2 mt-4 sm:mt-0 text-center sm:text-left flex items-center justify-center -ml-7">
+              <div class="sm:w-auto sm:pb-8 mt-4 lg:pt-10 sm:mt-0 text-center sm:text-left flex items-center justify-center ">
                 <div class="card max-w-lg bg-base-100 shadow-xl mb-8 lg:mb-0">
                   <div class="card-body">
                     <h2 class="card-title">
