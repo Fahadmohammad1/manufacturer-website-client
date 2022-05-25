@@ -7,7 +7,11 @@ import { useQuery } from "react-query";
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
 
-  const { data: myOrders, isLoading } = useQuery(["myOrders", user], () =>
+  const {
+    data: myOrders,
+    isLoading,
+    refetch,
+  } = useQuery(["myOrders", user], () =>
     fetch(`http://localhost:5000/myOrder/${user?.email}`).then((res) =>
       res.json()
     )
@@ -33,7 +37,12 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {myOrders.map((order, index) => (
-              <Row order={order} key={order._id} index={index}></Row>
+              <Row
+                order={order}
+                key={order._id}
+                index={index}
+                refetch={refetch}
+              ></Row>
             ))}
           </tbody>
         </table>
