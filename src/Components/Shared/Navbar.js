@@ -52,7 +52,8 @@ const Navbar = () => {
             <img src={logo} alt="" />
           </div>
           <a href="*" className="uppercase">
-            Mars Technology
+            Mars Techn<span className="text-[#F59B30]">o</span>l
+            <span className="text-[#F59B30]">o</span>gy
           </a>
         </div>
       </div>
