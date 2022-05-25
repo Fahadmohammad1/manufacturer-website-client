@@ -16,7 +16,7 @@ const Parts = () => {
 
   return (
     <div>
-      <h2 className="text-2xl uppercase font-bold text-center">
+      <h2 className="text-2xl uppercase font-bold text-center my-7 text-secondary">
         parts we provide
       </h2>
       <div className="grid lg:grid-cols-3 gap-y-10">

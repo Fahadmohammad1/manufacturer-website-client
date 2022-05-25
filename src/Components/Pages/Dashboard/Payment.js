@@ -70,7 +70,7 @@ const Payment = () => {
                 pinterest fanny pack venmo, post-ironic heirloom try-hard pabst
                 authentic iceland.
               </p>
-              <a class="inline-flex items-center">
+              <span class="inline-flex items-center">
                 <img
                   alt="testimonial"
                   src={user?.photoURL}
@@ -82,7 +82,7 @@ const Payment = () => {
                   </span>
                   <span class="text-gray-500 text-sm">{user?.email}</span>
                 </span>
-              </a>
+              </span>
             </div>
           </div>
         </div>
