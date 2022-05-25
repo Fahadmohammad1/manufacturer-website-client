@@ -14,6 +14,7 @@ import MyProfile from "./Components/Pages/Dashboard/MyProfile";
 import Blog from "./Components/Pages/Blog/Blog";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Payment from "./Components/Pages/Payment/Payment";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="myProfile" element={<MyProfile></MyProfile>} />
         </Route>
         <Route path="/blog" element={<Blog></Blog>} />
+        <Route path="/payment" element={<Payment></Payment>} />
       </Routes>
       <ToastContainer />
       <Footer></Footer>

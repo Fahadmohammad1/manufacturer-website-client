@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 const Row = ({ order, index, refetch }) => {
+  const navigate = useNavigate();
   const { name, price, quantity, address, _id } = order;
 
   const handleDelete = (id) => {
@@ -39,7 +41,9 @@ const Row = ({ order, index, refetch }) => {
       <td>{quantity}</td>
       <td>{address}</td>
       <td>
-        <button className="btn btn-xs">Pay</button>
+        <button onClick={() => navigate("/payment")} className="btn btn-xs">
+          Pay
+        </button>
       </td>
       <td>
         <button onClick={() => handleDelete(_id)} className="btn btn-xs">

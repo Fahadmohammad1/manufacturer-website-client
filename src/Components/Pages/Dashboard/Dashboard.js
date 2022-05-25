@@ -8,7 +8,9 @@ const Dashboard = () => {
         <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
 
         <div class="drawer-content flex flex-col ">
-          <h2 className="text-3xl my-2">Welcome to Dashboard</h2>
+          <h2 className="text-3xl my-2 text-green-400 font-bold">
+            Welcome to Dashboard
+          </h2>
           {/* <!-- Page content here --> */}
           <Outlet />
           <label
