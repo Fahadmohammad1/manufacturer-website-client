@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
 
 const Purchase = () => {
   const [user] = useAuthState(auth);
-  const [disabled, setDisabled] = useState(true);
+
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
 
@@ -23,24 +25,26 @@ const Purchase = () => {
     reset,
   } = useForm();
 
-  useEffect(() => {
-    // if (quantity > part.available_quantity || quantity < part.order_quantity) {
-    //   console.log("limit is limit");
-    //   setDisabled(false);
-    // }
-    console.log(part);
-    if (quantity < part.available_quantity || quantity > part.order_quantity) {
-      console.log("limit is limit");
-      setDisabled(false);
-    }
-  }, [quantity]);
   if (isLoading) {
     return <Loading />;
   }
 
-  console.log(price);
   const onSubmit = (data) => {
-    console.log(data);
+    const order = {
+      name: user.displayName,
+      email: user.email,
+      address: data.address,
+      phone: data.phone,
+      quantity: data.quantity,
+    };
+
+    axios.post("http://localhost:5000/order", order).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Order Successful");
+        console.log(res);
+      }
+    });
+    setPrice(0);
     reset();
   };
 
@@ -178,7 +182,7 @@ const Purchase = () => {
                           <input
                             type="number"
                             value={price}
-                            readOnly
+                            disabled
                             class="input input-bordered w-full max-w-xs"
                           />
                           <label class="label"></label>
@@ -187,7 +191,6 @@ const Purchase = () => {
                     </div>
                     <div>
                       <input
-                        disabled={disabled}
                         type="submit"
                         value="submit"
                         class="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"

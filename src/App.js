@@ -12,6 +12,8 @@ import MyOrders from "./Components/Pages/Dashboard/MyOrders";
 import AddReview from "./Components/Pages/Dashboard/AddReview";
 import MyProfile from "./Components/Pages/Dashboard/MyProfile";
 import Blog from "./Components/Pages/Blog/Blog";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
         </Route>
         <Route path="/blog" element={<Blog></Blog>} />
       </Routes>
+      <ToastContainer />
       <Footer></Footer>
     </div>
   );

@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
+import Loading from "../../Shared/Loading";
 
 const SignUp = () => {
+  const [user] = useAuthState(auth);
   const [displayName, setDisplayName] = useState("");
   console.log(displayName);
   const {
@@ -23,14 +28,15 @@ const SignUp = () => {
     { sendEmailVerification: true }
   );
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, eUser, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+
+  if (loading || gLoading) {
+    return <Loading />;
+  }
 
   const onSubmit = (data) => {
     createUserWithEmailAndPassword(data.Email, data.Password);
-    if (user) {
-      updateProfile({ displayName });
-    }
     reset();
   };
 
