@@ -9,6 +9,12 @@ const Row = ({ order, index }) => {
       <td>{price}</td>
       <td>{quantity}</td>
       <td>{address}</td>
+      <td>
+        <button className="btn btn-xs">Pay</button>
+      </td>
+      <td>
+        <button className="btn btn-xs">Delete</button>
+      </td>
     </tr>
   );
 };

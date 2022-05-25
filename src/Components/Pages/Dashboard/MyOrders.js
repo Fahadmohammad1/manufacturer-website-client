@@ -16,7 +16,6 @@ const MyOrders = () => {
   if (loading || isLoading) {
     return <Loading />;
   }
-  console.log(myOrders);
   return (
     <div>
       <div class="overflow-x-auto">
@@ -28,6 +27,8 @@ const MyOrders = () => {
               <th>Price</th>
               <th>Quantity</th>
               <th>Address</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

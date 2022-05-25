@@ -78,11 +78,12 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <Link
-          to="/login"
-          className="btn bg-gradient-to-r text-white from-[#F8941E] to-[#EDAC60]"
-        >
-          Login
+        <Link to="/login">
+          <button class="relative inline-flex items-center justify-center p-0.5  mr-2 overflow-hidden text-sm font-medium  rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+            <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-[#F59B30] hover:text-white">
+              Login
+            </span>
+          </button>
         </Link>
         <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
