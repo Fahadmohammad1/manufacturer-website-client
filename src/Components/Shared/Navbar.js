@@ -37,7 +37,7 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/">Item 1</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/">Item 2</Link>
@@ -60,7 +60,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
           <li>
-            <Link to="/">Item 1</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/">Item 2</Link>
@@ -91,6 +91,7 @@ const Navbar = () => {
             <div className="w-10 rounded-full">
               <img src={user?.photoURL} alt="" />
             </div>
+            <div>{user?.displayName}</div>
           </label>
           <ul
             tabIndex="0"
