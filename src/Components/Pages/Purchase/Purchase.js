@@ -31,12 +31,14 @@ const Purchase = () => {
 
   const onSubmit = (data) => {
     const order = {
+      product: part.name,
       name: user.displayName,
       email: user.email,
       address: data.address,
       phone: data.phone,
       quantity: data.quantity,
       price: price,
+      image: part.image,
     };
 
     axios.post("http://localhost:5000/order", order).then((res) => {
