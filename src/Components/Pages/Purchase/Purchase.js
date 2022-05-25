@@ -36,12 +36,12 @@ const Purchase = () => {
       address: data.address,
       phone: data.phone,
       quantity: data.quantity,
+      price: price,
     };
 
     axios.post("http://localhost:5000/order", order).then((res) => {
       if (res.data.insertedId) {
         toast.success("Order Successful");
-        console.log(res);
       }
     });
     setPrice(0);

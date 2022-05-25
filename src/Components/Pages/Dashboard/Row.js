@@ -1,12 +1,14 @@
 import React from "react";
 
-const Row = () => {
+const Row = ({ order, index }) => {
+  const { name, price, quantity, address } = order;
   return (
     <tr>
-      <th>1</th>
-      <td>Cy Ganderton</td>
-      <td>Quality Control Specialist</td>
-      <td>Blue</td>
+      <th>{index + 1}</th>
+      <td>{name}</td>
+      <td>{price}</td>
+      <td>{quantity}</td>
+      <td>{address}</td>
     </tr>
   );
 };
