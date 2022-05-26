@@ -23,9 +23,9 @@ const SignUp = () => {
     return <Loading />;
   }
   const newUser = {
-    name: eUser.user.displayName,
-    email: eUser.user.email,
-    image: eUser.user.photoURL,
+    name: eUser?.user?.displayName,
+    email: eUser?.user?.email,
+    image: eUser?.user?.photoURL,
   };
 
   const onSubmit = async (data) => {

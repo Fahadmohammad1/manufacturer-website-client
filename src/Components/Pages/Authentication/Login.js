@@ -23,7 +23,7 @@ const Login = () => {
     handleSubmit,
     reset,
   } = useForm();
-  const [signInWithEmailAndPassword, eUser, eLoading, eError] =
+  const [signInWithEmailAndPassword, , eLoading, eError] =
     useSignInWithEmailAndPassword(auth);
 
   useEffect(() => {
@@ -38,6 +38,25 @@ const Login = () => {
   if (loading || eLoading || gLoading) {
     return <Loading />;
   }
+  const handleGoogle = async () => {
+    await signInWithGoogle();
+    const newUser = {
+      name: gUser?.user?.displayName,
+      email: gUser?.user?.email,
+      image: gUser?.user?.photoURL,
+    };
+    await fetch(`http://localhost:5000/user/${gUser?.user?.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
 
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.Email, data.Password);
@@ -88,7 +107,7 @@ const Login = () => {
             </button>
             <button
               onClick={() => {
-                signInWithGoogle();
+                handleGoogle();
               }}
               className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
               type="button"
