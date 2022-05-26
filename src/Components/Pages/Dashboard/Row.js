@@ -15,7 +15,7 @@ const Row = ({ order, index, refetch }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/myOrder/${id}`, {
+        fetch(`https://ancient-wave-77953.herokuapp.com/myOrder/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

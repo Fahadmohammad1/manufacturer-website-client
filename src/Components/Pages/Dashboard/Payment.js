@@ -10,7 +10,9 @@ const Payment = () => {
   const { id } = useParams();
 
   const { data: order, isLoading } = useQuery(["order", id], () =>
-    fetch(`http://localhost:5000/myOrder/order/${id}`).then((res) => res.json())
+    fetch(`https://ancient-wave-77953.herokuapp.com/myOrder/order/${id}`).then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading || loading) {

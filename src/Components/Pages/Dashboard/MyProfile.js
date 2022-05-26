@@ -14,7 +14,9 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery(["owner", user], () =>
-    fetch(`http://localhost:5000/user/${user?.email}`).then((res) => res.json())
+    fetch(`https://ancient-wave-77953.herokuapp.com/user/${user?.email}`).then(
+      (res) => res.json()
+    )
   );
   console.log(owner);
 
@@ -39,7 +41,7 @@ const MyProfile = () => {
       linkedIn: data?.link,
     };
     if (user) {
-      fetch(`http://localhost:5000/user/${user?.email}`, {
+      fetch(`https://ancient-wave-77953.herokuapp.com/user/${user?.email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
