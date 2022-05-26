@@ -1,7 +1,7 @@
-import axios from "axios";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
@@ -10,33 +10,54 @@ const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
 
   const {
+    data: owner,
+    isLoading,
+    refetch,
+  } = useQuery(["owner", user], () =>
+    fetch(`http://localhost:5000/user/${user?.email}`).then((res) => res.json())
+  );
+  console.log(owner);
+
+  const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
 
-  if (loading) {
+  if (loading || isLoading) {
     return <Loading />;
   }
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const userData = {
-      name: user.displayName,
-      email: user.email,
-      image: user.photoURL,
-      address: data.address,
-      phone: data.phone,
-      education: data.education,
-      linkedIn: data.link,
+      name: user?.displayName,
+      email: user?.email,
+      image: user?.photoURL,
+      address: data?.address,
+      phone: data?.phone,
+      education: data?.education,
+      linkedIn: data?.link,
     };
-
-    axios.post("http://localhost:5000/user", userData).then((res) => {
-      if (res.data.insertedId) {
-        toast.success("Profile Information Saved");
-      } else {
-        toast.error("Failed to Save Information");
-      }
-    });
+    if (user) {
+      fetch(`http://localhost:5000/user/${user?.email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.modifiedCount > 0) {
+            toast.success("Information updated Successfully");
+          }
+          if (result.upsertedCount > 0) {
+            toast.success("Information Saved Successfully");
+          } else {
+            toast.error("failed to save");
+          }
+        });
+    }
     reset();
   };
   return (
@@ -54,7 +75,7 @@ const MyProfile = () => {
             </div>
             <div class="flex flex-col  pl-10  pb-10">
               <h1 class="text-3xl text-secondary font-semibold">
-                {user?.displayName}
+                {owner?.name}
               </h1>
               <div class="mt-2 flex items-center">
                 <img
@@ -63,7 +84,7 @@ const MyProfile = () => {
                   alt=""
                 />
                 <h1 class="text-base text-primary ml-5 font-semibold">
-                  {user?.email}
+                  {owner?.email}
                 </h1>
               </div>
 
@@ -89,7 +110,7 @@ const MyProfile = () => {
                     />
                   </svg>
                   <h1 class="text-base text-primary ml-5 font-semibold">
-                    +880194454534
+                    {owner?.phone}
                   </h1>
                 </div>
                 <div class="mt-2 flex items-center text-white">
@@ -108,7 +129,7 @@ const MyProfile = () => {
                     />
                   </svg>
                   <h1 class="text-base text-primary ml-5 font-semibold">
-                    National University
+                    {owner?.education}
                   </h1>
                 </div>
                 <div class="mt-2 flex items-center text-white">
@@ -127,7 +148,7 @@ const MyProfile = () => {
                     />
                   </svg>
                   <h1 class="text-base text-primary ml-5 font-semibold">
-                    Chittagong
+                    {owner?.address}
                   </h1>
                 </div>
                 <div class="mt-2 flex items-center text-white"></div>

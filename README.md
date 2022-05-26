@@ -22,7 +22,7 @@ Add two different sections on the home page and the 6 sections mentioned above. 
 
 On the Add A Review page, users should be able to add a review. A review will contain ratings ( a number 1 to 5 and a description). That review will appear on the home page reviews section. Right now, you will see every review on the home page. There is no limit on the number of reviews or the order of the review.
 
-The My profile route will be available for every user (admin or non-admin. everyone will see this link). The user will see their name and email address on this profile in this link. Also, this page will have fields to add fields like education, location (city/district), phone number, LinkedIn profile link, etc. And users will be able to save this information in the database. Also, the user will be able to update this information.
+<!-- The My profile route will be available for every user (admin or non-admin. everyone will see this link). The user will see their name and email address on this profile in this link. Also, this page will have fields to add fields like education, location (city/district), phone number, LinkedIn profile link, etc. And users will be able to save this information in the database. Also, the user will be able to update this information. -->
 
 If an admin logs in, they will not see the options that a user sees except My Profile. This means an admin will not see my orders and add a review link. Instead, an admin will see My Profile, Manage All Orders, Add A Product, Make Admin, Manage Products. Based on your website idea, you can change the name of these menu names. Manage products will be described in the bonus section.
 
@@ -46,18 +46,18 @@ Create My Portfolio route. In this route, you will have your name, email address
 
 Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
 
-Use a database to store information. It could be mongodb atlas or any other database.
+<!-- Use a database to store information. It could be mongodb atlas or any other database. -->
 
 Bonus:
 Meaningful readme.md file on both the client and server sides containing your website name, a link to your live site. Add at least five bullet points that mention your website's different features and functionality.
 
-At least 15 meaningful GitHub commits for the client-side and at least 10 meaningful commits for the server-side repository.
+<!-- At least 15 meaningful GitHub commits for the client-side and at least 10 meaningful commits for the server-side repository. -->
 
-Make the website responsive. Make sure the site looks different on desktop and mobile responsive. Tablet responsive is optional.
+<!-- Make the website responsive. Make sure the site looks different on desktop and mobile responsive. Tablet responsive is optional. -->
 
-Make the website meaningful and consistent in look and feel. Give your website a relevant name. Images and all the content of the website have to be appropriate. No lorem ipsum please.
+<!-- Make the website meaningful and consistent in look and feel. Give your website a relevant name. Images and all the content of the website have to be appropriate. No lorem ipsum please. -->
 
-Clean and organized Code. Organize components and add comments when needed. use .env file on the server, .env.local file on the client to hide db user and password, etc. Also use the .gitignore file
+<!-- Clean and organized Code. Organize components and add comments when needed. use .env file on the server, .env.local file on the client to hide db user and password, etc. Also use the .gitignore file -->
 
 On the Manage All Orders page for the admin, the logged-in admin will see the orders placed by every user. If multiple users use this website to place orders, everyone's order will be displayed here. The orders that are not paid will show unpaid. And the orders that are paid, an Admin can update the status of a paid order. After placing an order and completing the payment, every order will have a default status: pending. On the Manage All Orders page, an admin will be able to update the status of the pending to shipped status. This could be a simple button to update the pending status. (don't overthink, this is a simple button to update the status field of the order. Use Id to find the order and set the status to approved). Also, the admin will be able to cancel (cancel means admin can delete an order) that is not paid yet. Make sure to add a confirmation before deleting.
 
@@ -67,6 +67,6 @@ Similarly, you will need to protect the admin route and on the server side verif
 
 on the Manage Products page, an admin can delete any products. Please make sure there is a confirmation. After deleting that product will not appear on the home page. Use a meaningful and good-looking confirmation modal. Avoid using browser default confirm.
 
-Use react query for at least one API call.
+<!-- Use react query for at least one API call. -->
 
-Use react hook form at least one form. For the rest of the forms, you can either use react hook form or basic html form or any other form you want.
+<!-- Use react hook form at least one form. For the rest of the forms, you can either use react hook form or basic html form or any other form you want. -->
