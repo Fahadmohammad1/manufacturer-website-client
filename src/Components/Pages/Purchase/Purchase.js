@@ -193,6 +193,10 @@ const Purchase = () => {
                     </div>
                     <div>
                       <input
+                        disabled={
+                          errors.quantity?.type === "max" ||
+                          errors.quantity?.type === "min"
+                        }
                         type="submit"
                         value="submit"
                         class="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"
