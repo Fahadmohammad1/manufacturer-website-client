@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import {
-  useAuthState,
-  useCreateUserWithEmailAndPassword,
-} from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading";
 
 const SignUp = () => {
-  const [user] = useAuthState(auth);
-  const [displayName, setDisplayName] = useState("");
-  console.log(displayName);
   const {
     register,
     formState: { errors },
@@ -23,21 +16,32 @@ const SignUp = () => {
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(
-    auth,
-    { sendEmailVerification: true }
-  );
-
-  const [createUserWithEmailAndPassword, eUser, loading, error] =
+  const [createUserWithEmailAndPassword, eUser, loading, eError] =
     useCreateUserWithEmailAndPassword(auth);
 
-  if (loading || gLoading) {
+  if (loading || updating) {
     return <Loading />;
   }
+  const newUser = {
+    name: eUser.user.displayName,
+    email: eUser.user.email,
+    image: eUser.user.photoURL,
+  };
 
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.Email, data.Password);
     await updateProfile({ displayName: data.name });
+    await fetch(`http://localhost:5000/user/${data.Email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
     reset();
   };
 
@@ -48,7 +52,7 @@ const SignUp = () => {
           <div>
             <h1 class="text-white font-bold text-4xl font-sans">GoFinance</h1>
             <p class="text-white mt-1">
-              The most popular peer to peer lending at SEA
+              Be a member of our community by creating new account
             </p>
             <button
               type="submit"
@@ -73,34 +77,8 @@ const SignUp = () => {
                 <button class="btn btn-link">Login</button>
               </Link>
             </div>
-            <div className="flex justify-center">
-              <button
-                className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                type="button"
-              >
-                <img
-                  alt="..."
-                  className="w-5 mr-1"
-                  src="https://demos.creative-tim.com/notus-js/assets/img/github.svg"
-                />
-                Github
-              </button>
-              <button
-                onClick={() => signInWithGoogle()}
-                className="bg-white active:bg-blueGray-50 text-blueGray-700  px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
-                type="button"
-              >
-                <img
-                  alt="..."
-                  className="w-5 mr-1"
-                  src="https://demos.creative-tim.com/notus-js/assets/img/google.svg"
-                />
-                Google{" "}
-              </button>
-            </div>
-
             <div class="divider">OR</div>
-            <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+            <div class="flex items-center border-2 border-primary py-2 px-3 rounded-2xl mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
@@ -115,7 +93,6 @@ const SignUp = () => {
               </svg>
               <input
                 {...register("name", {
-                  onChange: (e) => setDisplayName(e.target.value),
                   required: {
                     value: true,
                   },
@@ -125,7 +102,7 @@ const SignUp = () => {
                 placeholder="Full name"
               />
             </div>
-            <div class="flex items-center border-2 border-orange-500 py-2 px-3 rounded-2xl ">
+            <div class="flex items-center border-2 border-primary py-2 px-3 rounded-2xl ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
@@ -164,7 +141,7 @@ const SignUp = () => {
                 <p className="text-red-400">{errors.Email.message}</p>
               )}
             </label>
-            <div class="flex items-center border-2 border-orange-500 py-2 px-3 rounded-2xl">
+            <div class="flex items-center border-2 border-primary py-2 px-3 rounded-2xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 text-gray-400"
@@ -202,6 +179,10 @@ const SignUp = () => {
                 <p className="text-red-400">{errors.Password.message}</p>
               )}
             </label>
+            <p>
+              {eError?.message.slice(-22, -2) ||
+                updateError?.message.slice(-22, -2)}
+            </p>
             <input
               className="block w-full bg-indigo-600 py-2 rounded-2xl text-white font-semibold mb-1"
               type="submit"

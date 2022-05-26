@@ -11,7 +11,6 @@ import Loading from "../../Shared/Loading";
 const Purchase = () => {
   const [user] = useAuthState(auth);
 
-  const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
 
   const { id } = useParams();
@@ -139,7 +138,6 @@ const Purchase = () => {
                           <input
                             {...register("quantity", {
                               onChange: (e) => {
-                                setQuantity(e.target.value);
                                 setPrice(parseInt(e.target.value * part.price));
                               },
                               required: {

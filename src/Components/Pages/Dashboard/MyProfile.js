@@ -1,6 +1,8 @@
+import axios from "axios";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
 
@@ -17,7 +19,26 @@ const MyProfile = () => {
   if (loading) {
     return <Loading />;
   }
-  const onSubmit = () => {};
+  const onSubmit = (data) => {
+    const userData = {
+      name: user.displayName,
+      email: user.email,
+      image: user.photoURL,
+      address: data.address,
+      phone: data.phone,
+      education: data.education,
+      linkedIn: data.link,
+    };
+
+    axios.post("http://localhost:5000/user", userData).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Profile Information Saved");
+      } else {
+        toast.error("Failed to Save Information");
+      }
+    });
+    reset();
+  };
   return (
     <section>
       <h1 className="text-2xl font-bold font-serif">Update Your Profile</h1>
@@ -181,34 +202,20 @@ const MyProfile = () => {
                       <span class="label-text text-white">Education</span>
                     </label>
                     <input
-                      {...register("quantity", {
-                        // onChange: (e) => {
-                        //   setQuantity(e.target.value);
-                        //   setPrice(parseInt(e.target.value * part.price));
-                        // },
+                      {...register("education", {
                         required: {
                           value: true,
-                          message: "Please Enter Quantity",
+                          message: "Education background required",
                         },
                       })}
-                      type="number"
-                      placeholder="Enter Quantity"
+                      type="text"
+                      placeholder="Education"
                       class="input input-bordered w-full max-w-xs"
                     />
                     <label class="label">
-                      {errors.quantity?.type === "required" && (
+                      {errors.education?.type === "required" && (
                         <span class="label-text-alt text-red-600">
-                          {errors?.quantity.message}
-                        </span>
-                      )}
-                      {errors.quantity?.type === "max" && (
-                        <span class="label-text-alt text-red-600">
-                          {errors?.quantity.message}
-                        </span>
-                      )}
-                      {errors.quantity?.type === "min" && (
-                        <span class="label-text-alt text-red-600">
-                          {errors?.quantity.message}
+                          {errors?.education.message}
                         </span>
                       )}
                     </label>
@@ -218,11 +225,22 @@ const MyProfile = () => {
                       <span class="label-text text-white">LinkedIn</span>
                     </label>
                     <input
-                      type="number"
-                      disabled
+                      {...register("link", {
+                        required: {
+                          value: true,
+                          message: "LinkedIn profile link required",
+                        },
+                      })}
+                      type="url"
                       class="input input-bordered w-full max-w-xs"
                     />
-                    <label class="label"></label>
+                    <label class="label">
+                      {errors?.link?.type === "required" && (
+                        <span class="label-text-alt text-red-600">
+                          {errors?.link.message}
+                        </span>
+                      )}
+                    </label>
                   </div>
                 </div>
               </div>

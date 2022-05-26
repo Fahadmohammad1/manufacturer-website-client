@@ -35,7 +35,7 @@ const Login = () => {
   //   navigate(from, { replace: true });
   // }
 
-  if (loading || eLoading) {
+  if (loading || eLoading || gLoading) {
     return <Loading />;
   }
 
@@ -45,17 +45,23 @@ const Login = () => {
   };
   return (
     <div className="h-screen lg:flex container mx-auto">
-      <div className="hidden lg:flex w-1/2 bg-gradient-to-tr from-[#F8941E] to-[#EDAC60] justify-around items-center">
+      <div class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
         <div>
-          <h1 className="text-white font-bold text-4xl font-sans">GoFinance</h1>
-          <p className="text-white mt-1">The most popular brand in Asia</p>
+          <h1 class="text-white font-bold text-4xl font-sans">Welcome Back</h1>
+          <p class="text-white mt-1">
+            Login back to your account, Stay connected with us
+          </p>
           <button
             type="submit"
-            className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+            class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
           >
             Read More
           </button>
         </div>
+        <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div class="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div class="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
       </div>
       <div className="mx-auto flex w-1/2 justify-center items-center bg-white mt-7 lg:mt-0">
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
@@ -97,7 +103,7 @@ const Login = () => {
           </div>
 
           <div class="divider">OR</div>
-          <div class="flex items-center border-2 border-orange-500 py-2 px-3 rounded-2xl ">
+          <div class="flex items-center border-2 border-primary py-2 px-3 rounded-2xl ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 text-gray-400"
@@ -136,7 +142,7 @@ const Login = () => {
               <p className="text-red-400">{errors.Email.message}</p>
             )}
           </label>
-          <div class="flex items-center border-2 border-orange-500 py-2 px-3 rounded-2xl">
+          <div class="flex items-center border-2 border-primary py-2 px-3 rounded-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5 text-gray-400"
@@ -174,6 +180,9 @@ const Login = () => {
               <p className="text-red-400">{errors.Password.message}</p>
             )}
           </label>
+          <p className="text-red-600 text-center mb-2">
+            {gError?.message.slice(-22, -2) || eError?.message.slice(-22, -2)}
+          </p>
           <input
             className="block w-full bg-indigo-600 py-2 rounded-2xl text-white font-semibold mb-1"
             type="submit"
