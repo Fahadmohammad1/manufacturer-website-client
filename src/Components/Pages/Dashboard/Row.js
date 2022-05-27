@@ -21,7 +21,7 @@ const Row = ({ order, index, refetch }) => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount === 1) {
-              refetch();
+              // refetch();
             }
           });
         swal("Your Order has been deleted!", {

@@ -3,9 +3,30 @@ import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
 import Row from "./Row";
 import { useQuery } from "react-query";
+// import { useEffect, useState } from "react";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
+  // const [myOrders, setMyOrders] = useState([]);
+  // console.log(myOrders);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     fetch(`http://localhost:5000/myOrder/${user?.email}`, {
+  //       method: "GET",
+  //       headers: {
+  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //       },
+  //     })
+  //       .then((res) => {
+  //         console.log(res);
+  //         return res.json();
+  //       })
+  //       .then((data) => {
+  //         setMyOrders(data);
+  //       });
+  //   }
+  // }, [user]);
 
   const {
     data: myOrders,
@@ -17,12 +38,15 @@ const MyOrders = () => {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    }).then((res) => res.json())
+    }).then((res) => {
+      console.log(res);
+      return res.json();
+    })
   );
-
   if (loading || isLoading) {
     return <Loading />;
   }
+
   return (
     <div>
       <div className="overflow-x-auto">
