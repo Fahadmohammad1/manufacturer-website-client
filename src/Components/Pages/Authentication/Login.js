@@ -24,9 +24,9 @@ const Login = () => {
     handleSubmit,
     reset,
   } = useForm();
-  const [signInWithEmailAndPassword, , eLoading, eError] =
+  const [signInWithEmailAndPassword, eUser, eLoading, eError] =
     useSignInWithEmailAndPassword(auth);
-  const [token] = useToken(gUser || user);
+  const [token] = useToken(gUser || user || eUser);
 
   useEffect(() => {
     if (token) {

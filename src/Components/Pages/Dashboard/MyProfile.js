@@ -67,13 +67,16 @@ const MyProfile = () => {
             <div className=" h-40 rounded-t-lg bg-contain bg-no-repeat bg-[url(https://www.linkpicture.com/q/Rectangle-6.png)] flex flex-col justify-end pl-20 pr-20 pt-52  max-w-[24rem]">
               <img
                 className="w-28 h-28 object-cover  mb-2 z-10 "
-                src={user?.photoURL}
+                src={
+                  user?.photoURL ||
+                  "https://p.kindpng.com/picc/s/134-1341738_contacts-icon-contact-icon-png-red-transparent-png.png"
+                }
                 alt="logo"
               />
             </div>
             <div className="flex flex-col  pl-10  pb-10">
               <h1 className="text-3xl text-secondary font-semibold">
-                {owner?.name}
+                {owner?.name || "Unknown"}
               </h1>
               <div className="mt-2 flex items-center">
                 <img

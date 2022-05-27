@@ -16,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Payment from "./Components/Pages/Dashboard/Payment";
 import MakeAdmin from "./Components/Pages/Dashboard/MakeAdmin";
+import RequireAdmin from "./Components/Shared/RequireAdmin";
 
 function App() {
   return (
@@ -38,7 +39,14 @@ function App() {
           <Route path="addReview" element={<AddReview></AddReview>} />
           <Route path="myProfile" element={<MyProfile></MyProfile>} />
           <Route path="payment/:id" element={<Payment></Payment>} />
-          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>} />
+          <Route
+            path="makeAdmin"
+            element={
+              <RequireAdmin>
+                <MakeAdmin></MakeAdmin>
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="/blog" element={<Blog></Blog>} />
       </Routes>
