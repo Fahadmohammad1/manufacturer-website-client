@@ -55,12 +55,11 @@ const MyProfile = () => {
           }
           if (result.upsertedCount > 0) {
             toast.success("Information Saved Successfully");
-          } else {
-            toast.error("failed to save");
           }
         });
     }
     reset();
+    refetch();
   };
   return (
     <section>

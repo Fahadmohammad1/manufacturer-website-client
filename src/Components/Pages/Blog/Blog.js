@@ -1,10 +1,16 @@
 import React from "react";
+import CountUp from "react-countup";
 
 const Blog = () => {
   return (
-    <div>
-      <h1>this is blog</h1>
-    </div>
+    <CountUp start={0} end={100}>
+      {({ countUpRef, start }) => (
+        <div>
+          <span ref={countUpRef} />
+          <button onClick={start}>Start</button>
+        </div>
+      )}
+    </CountUp>
   );
 };
 
