@@ -3,10 +3,12 @@ import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading";
 import Row from "./Row";
 import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 // import { useEffect, useState } from "react";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
   // const [myOrders, setMyOrders] = useState([]);
   // console.log(myOrders);
 
@@ -40,6 +42,9 @@ const MyOrders = () => {
       },
     }).then((res) => {
       console.log(res);
+      if (res.status === 401 || res.status === 403) {
+        navigate("/");
+      }
       return res.json();
     })
   );
