@@ -111,6 +111,7 @@ const Navbar = () => {
               <button
                 onClick={() => {
                   signOut(auth);
+                  localStorage.removeItem("accessToken");
                   navigate("/");
                 }}
               >

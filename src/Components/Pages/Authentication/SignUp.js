@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
@@ -12,6 +12,7 @@ import useToken from "../../../Hooks/useToken";
 
 const SignUp = () => {
   const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -25,6 +26,9 @@ const SignUp = () => {
     useCreateUserWithEmailAndPassword(auth);
 
   const [token] = useToken(eUser || user);
+  if (token) {
+    navigate("/login");
+  }
 
   if (loading || updating || eLoading) {
     return <Loading />;
@@ -38,17 +42,17 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.Email, data.Password);
     await updateProfile({ displayName: data.name });
-    // await fetch(`http://localhost:5000/user/${data.Email}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(newUser),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     console.log(result);
-    //   });
+    await fetch(`http://localhost:5000/user/${data.Email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
     reset();
   };
 

@@ -29,7 +29,7 @@ const Login = () => {
   const [token] = useToken(gUser || user);
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
     if (user) {
@@ -39,22 +39,19 @@ const Login = () => {
         image: gUser?.user?.photoURL,
       };
 
-      // fetch(
-      //   `http://localhost:5000/user/${gUser?.user?.email}`,
-      //   {
-      //     method: "PUT",
-      //     headers: {
-      //       "content-type": "application/json",
-      //     },
-      //     body: JSON.stringify(newUser),
-      //   }
-      // )
-      //   .then((res) => res.json())
-      //   .then((result) => {
-      //     console.log(result);
-      //   });
+      fetch(`http://localhost:5000/user/${gUser?.user?.email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+        });
     }
-  }, [from, navigate, user, gUser]);
+  }, [from, navigate, user, gUser, token]);
 
   if (loading || eLoading || gLoading) {
     return <Loading />;
