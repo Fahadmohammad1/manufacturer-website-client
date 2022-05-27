@@ -15,9 +15,7 @@ const Purchase = () => {
 
   const { id } = useParams();
   const { data: part, isLoading } = useQuery("part", () =>
-    fetch(`https://ancient-wave-77953.herokuapp.com/parts/${id}`).then((res) =>
-      res.json()
-    )
+    fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
   );
   const {
     register,
@@ -42,45 +40,43 @@ const Purchase = () => {
       image: part.image,
     };
 
-    axios
-      .post("https://ancient-wave-77953.herokuapp.com/order", order)
-      .then((res) => {
-        if (res.data.insertedId) {
-          toast.success("Order Successful");
-        }
-      });
+    axios.post("http://localhost:5000/order", order).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("Order Successful");
+      }
+    });
     setPrice(0);
     reset();
   };
 
   return (
     <div>
-      <section class="text-gray-600 body-font">
-        <div class="container px-5 py-7 mx-auto flex flex-col">
-          <div class="lg:w-5/6 mx-auto">
-            <div class="rounded-lg h-80 overflow-hidden flex justify-center">
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-7 mx-auto flex flex-col">
+          <div className="lg:w-5/6 mx-auto">
+            <div className="rounded-lg h-80 overflow-hidden flex justify-center">
               <img
-                class="lg:w-3/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
+                className="lg:w-3/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
                 alt="hero"
                 src={part.image}
               />
             </div>
-            <div class="flex flex-col sm:flex-row mt-6 gap-10">
-              <div class="sm:w-auto text-center sm:pb-8 order-2">
-                <div class="w-16 h-16 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
+            <div className="flex flex-col sm:flex-row mt-6 gap-10">
+              <div className="sm:w-auto text-center sm:pb-8 order-2">
+                <div className="w-16 h-16 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
                   <img src={user?.photoURL} alt="user" />
                 </div>
-                <div class="flex flex-col items-center text-center justify-center">
-                  <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">
+                <div className="flex flex-col items-center text-center justify-center">
+                  <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">
                     {user?.email}
                   </h2>
-                  <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+                  <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="lg:flex gap-4">
                       <div>
-                        <div class="form-control w-full max-w-xs">
-                          <label class="label">
-                            <span class="label-text">Your Address</span>
+                        <div className="form-control w-full max-w-xs">
+                          <label className="label">
+                            <span className="label-text">Your Address</span>
                           </label>
                           <input
                             type="text"
@@ -91,19 +87,19 @@ const Purchase = () => {
                               },
                             })}
                             placeholder="Address"
-                            class="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs"
                           />
-                          <label class="label">
+                          <label className="label">
                             {errors.address?.type === "required" && (
-                              <span class="label-text-alt text-red-600">
+                              <span className="label-text-alt text-red-600">
                                 {errors?.address.message}
                               </span>
                             )}
                           </label>
                         </div>
-                        <div class="form-control w-full max-w-xs">
-                          <label class="label">
-                            <span class="label-text">Phone Number</span>
+                        <div className="form-control w-full max-w-xs">
+                          <label className="label">
+                            <span className="label-text">Phone Number</span>
                           </label>
                           <input
                             type="number"
@@ -118,16 +114,16 @@ const Purchase = () => {
                               },
                             })}
                             placeholder="+880"
-                            class="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs"
                           />
-                          <label class="label">
+                          <label className="label">
                             {errors.phone?.type === "required" && (
-                              <span class="label-text-alt text-red-600">
+                              <span className="label-text-alt text-red-600">
                                 {errors?.phone.message}
                               </span>
                             )}
                             {errors.phone?.type === "minLength" && (
-                              <span class="label-text-alt text-red-600">
+                              <span className="label-text-alt text-red-600">
                                 {errors?.phone.message}
                               </span>
                             )}
@@ -135,9 +131,9 @@ const Purchase = () => {
                         </div>
                       </div>
                       <div>
-                        <div class="form-control w-full max-w-xs">
-                          <label class="label">
-                            <span class="label-text">Order Quantity</span>
+                        <div className="form-control w-full max-w-xs">
+                          <label className="label">
+                            <span className="label-text">Order Quantity</span>
                           </label>
                           <input
                             {...register("quantity", {
@@ -159,37 +155,37 @@ const Purchase = () => {
                             })}
                             type="number"
                             placeholder="Enter Quantity"
-                            class="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs"
                           />
-                          <label class="label">
+                          <label className="label">
                             {errors.quantity?.type === "required" && (
-                              <span class="label-text-alt text-red-600">
+                              <span className="label-text-alt text-red-600">
                                 {errors?.quantity.message}
                               </span>
                             )}
                             {errors.quantity?.type === "max" && (
-                              <span class="label-text-alt text-red-600">
+                              <span className="label-text-alt text-red-600">
                                 {errors?.quantity.message}
                               </span>
                             )}
                             {errors.quantity?.type === "min" && (
-                              <span class="label-text-alt text-red-600">
+                              <span className="label-text-alt text-red-600">
                                 {errors?.quantity.message}
                               </span>
                             )}
                           </label>
                         </div>
-                        <div class="form-control w-full max-w-xs">
-                          <label class="label">
-                            <span class="label-text">Total Price</span>
+                        <div className="form-control w-full max-w-xs">
+                          <label className="label">
+                            <span className="label-text">Total Price</span>
                           </label>
                           <input
                             type="number"
                             value={price}
                             disabled
-                            class="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs"
                           />
-                          <label class="label"></label>
+                          <label className="label"></label>
                         </div>
                       </div>
                     </div>
@@ -201,16 +197,16 @@ const Purchase = () => {
                         }
                         type="submit"
                         value="submit"
-                        class="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"
+                        className="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"
                       />
                     </div>
                   </form>
                 </div>
               </div>
-              <div class="sm:w-auto sm:pb-8 mt-4 lg:pt-10 sm:mt-0 text-center sm:text-left flex items-center justify-center ">
-                <div class="card max-w-lg bg-base-100 shadow-xl mb-8 lg:mb-0">
-                  <div class="card-body">
-                    <h2 class="card-title">
+              <div className="sm:w-auto sm:pb-8 mt-4 lg:pt-10 sm:mt-0 text-center sm:text-left flex items-center justify-center ">
+                <div className="card max-w-lg bg-base-100 shadow-xl mb-8 lg:mb-0">
+                  <div className="card-body">
+                    <h2 className="card-title">
                       Category:
                       <span className="font-bold text-2xl">{part.name}</span>
                     </h2>

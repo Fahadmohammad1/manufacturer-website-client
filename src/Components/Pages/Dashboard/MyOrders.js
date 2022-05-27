@@ -12,9 +12,9 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["myOrders", user], () =>
-    fetch(
-      `https://ancient-wave-77953.herokuapp.com/myOrder/${user?.email}`
-    ).then((res) => res.json())
+    fetch(`http://localhost:5000/myOrder/${user?.email}`).then((res) =>
+      res.json()
+    )
   );
 
   if (loading || isLoading) {
@@ -22,8 +22,8 @@ const MyOrders = () => {
   }
   return (
     <div>
-      <div class="overflow-x-auto">
-        <table class="table table-zebra w-full">
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
           <thead>
             <tr>
               <th></th>
@@ -36,7 +36,7 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {myOrders.map((order, index) => (
+            {myOrders?.map((order, index) => (
               <Row
                 order={order}
                 key={order._id}

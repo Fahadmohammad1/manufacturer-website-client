@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import Loading from "../../Shared/Loading";
+import useToken from "../../../Hooks/useToken";
 
 const Login = () => {
   const [user, loading] = useAuthState(auth);
@@ -25,6 +26,7 @@ const Login = () => {
   } = useForm();
   const [signInWithEmailAndPassword, , eLoading, eError] =
     useSignInWithEmailAndPassword(auth);
+  const [token] = useToken(gUser || user);
 
   useEffect(() => {
     if (user) {
@@ -37,20 +39,20 @@ const Login = () => {
         image: gUser?.user?.photoURL,
       };
 
-      fetch(
-        `https://ancient-wave-77953.herokuapp.com/user/${gUser?.user?.email}`,
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(newUser),
-        }
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-        });
+      // fetch(
+      //   `http://localhost:5000/user/${gUser?.user?.email}`,
+      //   {
+      //     method: "PUT",
+      //     headers: {
+      //       "content-type": "application/json",
+      //     },
+      //     body: JSON.stringify(newUser),
+      //   }
+      // )
+      //   .then((res) => res.json())
+      //   .then((result) => {
+      //     console.log(result);
+      //   });
     }
   }, [from, navigate, user, gUser]);
 
@@ -64,33 +66,35 @@ const Login = () => {
   };
   return (
     <div className="h-screen lg:flex container mx-auto">
-      <div class="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
+      <div className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
         <div>
-          <h1 class="text-white font-bold text-4xl font-sans">Welcome Back</h1>
-          <p class="text-white mt-1">
+          <h1 className="text-white font-bold text-4xl font-sans">
+            Welcome Back
+          </h1>
+          <p className="text-white mt-1">
             Login back to your account, Stay connected with us
           </p>
           <button
             type="submit"
-            class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
+            className="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"
           >
             Read More
           </button>
         </div>
-        <div class="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-        <div class="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-        <div class="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
-        <div class="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -bottom-32 -left-40 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -bottom-40 -left-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -top-40 -right-0 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
+        <div className="absolute -top-20 -right-20 w-80 h-80 border-4 rounded-full border-opacity-30 border-t-8"></div>
       </div>
       <div className="mx-auto flex w-1/2 justify-center items-center bg-white mt-7 lg:mt-0">
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-          <h1 class="text-gray-800 font-bold text-2xl text-center">
+          <h1 className="text-gray-800 font-bold text-2xl text-center">
             Login to your account
           </h1>
           <div className="text-center">
             <Link to="/signup">
               <small>Don't have an Account?</small>
-              <button class="btn btn-link">Sign Up</button>
+              <button className="btn btn-link">Sign Up</button>
             </Link>
           </div>
           <div className="flex justify-center">
@@ -121,19 +125,19 @@ const Login = () => {
             </button>
           </div>
 
-          <div class="divider">OR</div>
-          <div class="flex items-center border-2 border-primary py-2 px-3 rounded-2xl ">
+          <div className="divider">OR</div>
+          <div className="flex items-center border-2 border-primary py-2 px-3 rounded-2xl ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-gray-400"
+              className="h-5 w-5 text-gray-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
               />
             </svg>
@@ -161,17 +165,17 @@ const Login = () => {
               <p className="text-red-400">{errors.Email.message}</p>
             )}
           </label>
-          <div class="flex items-center border-2 border-primary py-2 px-3 rounded-2xl">
+          <div className="flex items-center border-2 border-primary py-2 px-3 rounded-2xl">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 text-gray-400"
+              className="h-5 w-5 text-gray-400"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
 

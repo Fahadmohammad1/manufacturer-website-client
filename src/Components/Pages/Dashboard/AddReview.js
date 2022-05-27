@@ -49,11 +49,11 @@ const AddReview = () => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-1/2">
-      <div class="form-control">
-        <label class="label flex justify-center">
-          <span class="label-text">Select Rating (1 - 5)</span>
+      <div className="form-control">
+        <label className="label flex justify-center">
+          <span className="label-text">Select Rating (1 - 5)</span>
         </label>
-        <label class="input-group flex justify-center">
+        <label className="input-group flex justify-center">
           <input
             {...register("rating", {
               required: {
@@ -71,30 +71,30 @@ const AddReview = () => {
             })}
             type="number"
             placeholder="1-5"
-            class="input input-bordered"
+            className="input input-bordered"
           />
         </label>
-        <label class="label flex justify-center">
+        <label className="label flex justify-center">
           {errors?.rating?.type === "required" && (
-            <span class="label-text text-red-600">
+            <span className="label-text text-red-600">
               {errors?.rating?.message}
             </span>
           )}
           {errors?.rating?.type === "max" && (
-            <span class="label-text text-red-600">
+            <span className="label-text text-red-600">
               {errors?.rating?.message}
             </span>
           )}{" "}
           {errors?.rating?.type === "min" && (
-            <span class="label-text text-red-600">
+            <span className="label-text text-red-600">
               {errors?.rating?.message}
             </span>
           )}
         </label>
       </div>
-      <div class="form-control">
-        <label class="label">
-          <span class="label-text">Your Review</span>
+      <div className="form-control">
+        <label className="label">
+          <span className="label-text">Your Review</span>
         </label>
         <textarea
           type="text"
@@ -104,12 +104,12 @@ const AddReview = () => {
               message: "Please add a review",
             },
           })}
-          class="textarea textarea-bordered h-24"
+          className="textarea textarea-bordered h-24"
           placeholder="Bio"
         ></textarea>
-        <label class="label">
+        <label className="label">
           {errors?.type?.review === "required" && (
-            <span class="label-text-alt">{errors?.review?.message}</span>
+            <span className="label-text-alt">{errors?.review?.message}</span>
           )}
         </label>
       </div>
@@ -120,7 +120,7 @@ const AddReview = () => {
           }
           type="submit"
           value="submit"
-          class="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"
+          className="input text-gray-800 hover:text-white input-bordered w-full max-w-xs btn"
         />
       </div>
     </form>
