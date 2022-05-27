@@ -1,13 +1,14 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Assets/images/logo.png";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
 
   if (loading) {
     return <Loading />;
@@ -107,7 +108,14 @@ const Navbar = () => {
               <Link to="/">Settings</Link>
             </li>
             <li>
-              <button onClick={() => signOut(auth)}>Logout</button>
+              <button
+                onClick={() => {
+                  signOut(auth);
+                  navigate("/");
+                }}
+              >
+                Logout
+              </button>
             </li>
           </ul>
         </div>

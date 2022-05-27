@@ -18,7 +18,6 @@ const MyProfile = () => {
       (res) => res.json()
     )
   );
-  console.log(owner);
 
   const {
     register,
@@ -56,10 +55,10 @@ const MyProfile = () => {
           if (result.upsertedCount > 0) {
             toast.success("Information Saved Successfully");
           }
+          refetch();
         });
     }
     reset();
-    refetch();
   };
   return (
     <section>
