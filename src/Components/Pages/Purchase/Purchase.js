@@ -64,7 +64,13 @@ const Purchase = () => {
             <div className="flex flex-col sm:flex-row mt-6 gap-10">
               <div className="sm:w-auto text-center sm:pb-8 order-2">
                 <div className="w-16 h-16 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                  <img src={user?.photoURL} alt="user" />
+                  <img
+                    src={
+                      user?.photoURL ||
+                      "https://p.kindpng.com/picc/s/134-1341738_contacts-icon-contact-icon-png-red-transparent-png.png"
+                    }
+                    alt="user"
+                  />
                 </div>
                 <div className="flex flex-col items-center text-center justify-center">
                   <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">

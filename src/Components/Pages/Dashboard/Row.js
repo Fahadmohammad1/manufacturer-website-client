@@ -4,7 +4,7 @@ import swal from "sweetalert";
 
 const Row = ({ order, index, refetch }) => {
   const navigate = useNavigate();
-  const { product, price, quantity, address, _id } = order;
+  const { product, price, quantity, address, _id, paid } = order;
 
   const handleDelete = (id) => {
     swal({
@@ -41,12 +41,15 @@ const Row = ({ order, index, refetch }) => {
       <td>{quantity}</td>
       <td>{address}</td>
       <td>
-        <button
-          onClick={() => navigate(`/dashboard/payment/${_id}`)}
-          className="btn btn-xs"
-        >
-          Pay
-        </button>
+        {price && !paid && (
+          <button
+            onClick={() => navigate(`/dashboard/payment/${_id}`)}
+            className="btn btn-xs"
+          >
+            Pay
+          </button>
+        )}
+        {price && paid && <button className="btn btn-xs">Paid</button>}
       </td>
       <td>
         <button onClick={() => handleDelete(_id)} className="btn btn-xs">
