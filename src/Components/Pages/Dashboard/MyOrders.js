@@ -63,8 +63,8 @@ const MyOrders = () => {
               <th>Price</th>
               <th>Quantity</th>
               <th>Address</th>
-              <th></th>
-              <th></th>
+              <th>Payment</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
