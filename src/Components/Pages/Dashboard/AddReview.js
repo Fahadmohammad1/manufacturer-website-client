@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -7,7 +6,7 @@ import Loading from "../../Shared/Loading";
 
 const AddReview = () => {
   const [user, loading] = useAuthState(auth);
-  const [rating, setRating] = useState(0);
+
   const {
     register,
     formState: { errors },
@@ -18,32 +17,34 @@ const AddReview = () => {
     return <Loading />;
   }
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     const userReview = {
       name: user.displayName,
       email: user.email,
-      rating: rating,
+      rating: data.rating,
       review: data.review,
       image: user.photoURL,
     };
-    await fetch(`http://localhost:5000/review/${user?.email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userReview),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.modifiedCount > 0) {
-          toast.success("Review updated Successfully");
-        }
-        if (result.upsertedCount > 0) {
-          toast.success("Review added Successfully");
-        } else {
-          toast.error("failed to add Review");
-        }
-      });
+    if (user) {
+      fetch(`http://localhost:5000/review/${user?.email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userReview),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.modifiedCount > 0) {
+            toast.success("Review updated Successfully");
+          }
+          if (result.upsertedCount > 0) {
+            toast.success("Review added Successfully");
+          } else {
+            toast.error("failed to add Review");
+          }
+        });
+    }
     reset();
   };
   return (
@@ -67,7 +68,6 @@ const AddReview = () => {
                 value: 5,
                 message: "Maximum rating 5",
               },
-              onchange: (e) => setRating(e.target.value),
             })}
             type="number"
             placeholder="1-5"

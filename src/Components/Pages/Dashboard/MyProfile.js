@@ -30,7 +30,7 @@ const MyProfile = () => {
   if (loading || isLoading) {
     return <Loading />;
   }
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     const userData = {
       name: user?.displayName,
       email: user?.email,
