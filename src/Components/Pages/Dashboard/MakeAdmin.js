@@ -4,7 +4,11 @@ import Loading from "../../Shared/Loading";
 import UserRow from "./UserRow";
 
 const MakeAdmin = () => {
-  const { data: users, isLoading } = useQuery("users", () =>
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
     fetch("http://localhost:5000/users", {
       method: "GET",
       headers: {
@@ -30,7 +34,12 @@ const MakeAdmin = () => {
           </thead>
           <tbody>
             {users?.map((user, i) => (
-              <UserRow user={user} key={user._id} i={i}></UserRow>
+              <UserRow
+                user={user}
+                key={user._id}
+                i={i}
+                refetch={refetch}
+              ></UserRow>
             ))}
           </tbody>
         </table>
