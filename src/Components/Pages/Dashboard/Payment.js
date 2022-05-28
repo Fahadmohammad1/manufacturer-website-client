@@ -78,7 +78,7 @@ const Payment = () => {
               </svg>
               <div className="leading-relaxed mb-6">
                 <Elements stripe={stripePromise}>
-                  <CheckoutForm />
+                  <CheckoutForm order={order} />
                 </Elements>
               </div>
               <span className="inline-flex items-center">

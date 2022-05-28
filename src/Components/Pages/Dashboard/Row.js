@@ -52,9 +52,11 @@ const Row = ({ order, index, refetch }) => {
         {price && paid && <button className="btn btn-xs">Paid</button>}
       </td>
       <td>
-        <button onClick={() => handleDelete(_id)} className="btn btn-xs">
-          Cancel
-        </button>
+        {!paid && (
+          <button onClick={() => handleDelete(_id)} className="btn btn-xs">
+            Cancel
+          </button>
+        )}
       </td>
     </tr>
   );
