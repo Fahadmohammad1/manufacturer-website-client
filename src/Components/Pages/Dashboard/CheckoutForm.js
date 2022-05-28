@@ -11,7 +11,6 @@ const CheckoutForm = ({ order }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   const { price, name, email, _id } = order;
-  console.log(price);
 
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {
@@ -109,7 +108,7 @@ const CheckoutForm = ({ order }) => {
         <button
           className="btn btn-xs btn-secondary mt-5"
           type="submit"
-          disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret || success}
         >
           Pay
         </button>

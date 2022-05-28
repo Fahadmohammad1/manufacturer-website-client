@@ -9,27 +9,6 @@ import { useNavigate } from "react-router-dom";
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
-  // const [myOrders, setMyOrders] = useState([]);
-  // console.log(myOrders);
-
-  // useEffect(() => {
-  //   if (user) {
-  //     fetch(`http://localhost:5000/myOrder/${user?.email}`, {
-  //       method: "GET",
-  //       headers: {
-  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //     })
-  //       .then((res) => {
-  //         console.log(res);
-  //         return res.json();
-  //       })
-  //       .then((data) => {
-  //         setMyOrders(data);
-  //       });
-  //   }
-  // }, [user]);
-
   const {
     data: myOrders,
     isLoading,
@@ -41,7 +20,6 @@ const MyOrders = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     }).then((res) => {
-      console.log(res);
       if (res.status === 401 || res.status === 403) {
         navigate("/");
       }

@@ -16,14 +16,8 @@ const Dashboard = () => {
           <h2 className="text-3xl my-2 text-green-400 font-bold">
             Welcome to Dashboard
           </h2>
-          {/* <!-- Page content here --> */}
+
           <Outlet />
-          <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>

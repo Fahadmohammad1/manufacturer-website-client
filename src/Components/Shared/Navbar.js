@@ -17,7 +17,7 @@ const Navbar = () => {
     <div className="navbar bg-base-100 sticky top-0 z-40">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex="0" className="btn btn-ghost lg:hidden">
+          <label tabIndex="0" className="btn btn-ghost lg:hidden px-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -48,8 +48,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="btn btn-ghost normal-case text-xl">
-          <div className="w-12">
+        <div className="btn btn-ghost normal-case text-sm lg:text-xl px-0">
+          <div className="lg:w-12 w-10">
             <img src={logo} alt="" />
           </div>
           <a href="/" className="uppercase">
@@ -79,14 +79,30 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end hidden lg:flex">
-        <Link to="/login">
-          <button className="relative inline-flex items-center justify-center p-0.5  mr-2 overflow-hidden text-sm font-medium  rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+      <div className="navbar-end">
+        {!user && (
+          <Link to="/login">
+            <button className="relative inline-flex items-center justify-center p-0.5  mr-2 overflow-hidden text-sm font-medium  rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-[#F59B30] hover:text-white">
+                LOGIN
+              </span>
+            </button>
+          </Link>
+        )}
+        {user && (
+          <button
+            onClick={() => {
+              signOut(auth);
+              localStorage.removeItem("accessToken");
+              navigate("/");
+            }}
+            className="relative lg:inline-flex items-center justify-center p-0.5  mr-2 overflow-hidden text-sm font-medium  rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 hidden"
+          >
             <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0 text-[#F59B30] hover:text-white">
-              Login
+              LOGOUT
             </span>
           </button>
-        </Link>
+        )}
         <div className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
@@ -98,33 +114,53 @@ const Navbar = () => {
                 alt=""
               />
             </div>
-            <div>{user?.displayName}</div>
           </label>
           <ul
             tabIndex="0"
             className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/" className="justify-between">
+              <span>{user?.displayName}</span>
+            </li>
+            <li>
+              <span>{user?.email}</span>
+            </li>
+            <li>
+              <Link to="/dashboard/myProfile" className="justify-between">
                 Profile
                 <span className="badge">New</span>
               </Link>
             </li>
-            <li>
-              <Link to="/">Settings</Link>
-            </li>
-            <li>
-              <button
+            <li className="lg:hidden">
+              <span
                 onClick={() => {
                   signOut(auth);
                   localStorage.removeItem("accessToken");
                   navigate("/");
                 }}
               >
-                Logout
-              </button>
+                LogOut
+              </span>
             </li>
           </ul>
+        </div>
+        <div>
+          <label htmlFor="my-drawer-2" className="btn btn-ghost lg:hidden px-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
         </div>
       </div>
     </div>
