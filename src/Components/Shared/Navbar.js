@@ -63,9 +63,6 @@ const Navbar = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/">Item 2</Link>
-          </li>
 
           {user ? (
             <li>
