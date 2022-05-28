@@ -39,13 +39,16 @@ const Login = () => {
         image: gUser?.user?.photoURL,
       };
 
-      fetch(`http://localhost:5000/user/${gUser?.user?.email}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      })
+      fetch(
+        `https://ancient-wave-77953.herokuapp.com/user/${gUser?.user?.email}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        }
+      )
         .then((res) => res.json())
         .then((result) => {
           console.log(result);

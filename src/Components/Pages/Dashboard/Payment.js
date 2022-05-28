@@ -17,7 +17,7 @@ const Payment = () => {
   const { id } = useParams();
 
   const { data: order, isLoading } = useQuery(["order", id], () =>
-    fetch(`http://localhost:5000/myOrder/order/${id}`, {
+    fetch(`https://ancient-wave-77953.herokuapp.com/myOrder/order/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

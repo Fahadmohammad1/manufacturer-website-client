@@ -42,7 +42,7 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.Email, data.Password);
     await updateProfile({ displayName: data.name });
-    await fetch(`http://localhost:5000/user/${data.Email}`, {
+    await fetch(`https://ancient-wave-77953.herokuapp.com/user/${data.Email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

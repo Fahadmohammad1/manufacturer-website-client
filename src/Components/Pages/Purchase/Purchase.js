@@ -15,7 +15,9 @@ const Purchase = () => {
 
   const { id } = useParams();
   const { data: part, isLoading } = useQuery("part", () =>
-    fetch(`http://localhost:5000/parts/${id}`).then((res) => res.json())
+    fetch(`https://ancient-wave-77953.herokuapp.com/parts/${id}`).then((res) =>
+      res.json()
+    )
   );
   const {
     register,
@@ -40,11 +42,13 @@ const Purchase = () => {
       image: part.image,
     };
 
-    axios.post("http://localhost:5000/order", order).then((res) => {
-      if (res.data.insertedId) {
-        toast.success("Order Successful");
-      }
-    });
+    axios
+      .post("https://ancient-wave-77953.herokuapp.com/order", order)
+      .then((res) => {
+        if (res.data.insertedId) {
+          toast.success("Order Successful");
+        }
+      });
     setPrice(0);
     reset();
   };
