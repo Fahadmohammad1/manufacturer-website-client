@@ -1,44 +1,38 @@
 [
   {
-    "id": 1,
-    "star": "5",
-    "picture": "http://placehold.it/32x32",
+    "rating": "5",
+    "image": "http://placehold.it/32x32",
     "name": "Marci Mcintyre",
-    "description": ""
+    "review": "This is a dummy review for testing website review section"
   },
   {
-    "id": 2,
-    "star": "5",
-    "picture": "http://placehold.it/32x32",
+    "rating": "5",
+    "image": "http://placehold.it/32x32",
     "name": "Doris Alford",
-    "description": ""
+    "review": "This is a dummy review for testing website review section"
   },
   {
-    "id": 3,
-    "star": "5",
-    "picture": "http://placehold.it/32x32",
+    "rating": "5",
+    "image": "http://placehold.it/32x32",
     "name": "Stephenson Riddle",
-    "description": ""
+    "review": "This is a dummy review for testing website review section"
   },
   {
-    "id": 4,
-    "star": "5",
-    "picture": "http://placehold.it/32x32",
+    "rating": "5",
+    "image": "http://placehold.it/32x32",
     "name": "Amelia Rose",
-    "description": ""
+    "review": "This is a dummy review for testing website review section"
   },
   {
-    "id": 5,
-    "star": "5",
-    "picture": "http://placehold.it/32x32",
+    "rating": "5",
+    "image": "http://placehold.it/32x32",
     "name": "Forbes Winters",
-    "description": ""
+    "review": "This is a dummy review for testing website review section"
   },
   {
-    "id": 6,
-    "star": "5",
-    "picture": "http://placehold.it/32x32",
+    "rating": "5",
+    "image": "http://placehold.it/32x32",
     "name": "Corina Whitfield",
-    "description": ""
+    "review": "This is a dummy review for testing website review section"
   }
 ]
