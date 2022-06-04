@@ -13,20 +13,7 @@ const ReviewHome = ({ review }) => {
         </div>
         <div>
           <h2 className="text-gray-800 text-3xl font-semibold">
-            {/* <div className="rating">
-              <input
-                defaultChecked
-                type="radio"
-                name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
-              />
-              <input
-                defaultChecked
-                type="radio"
-                name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
-                checked
-              />
+            <div className="rating">
               <input
                 defaultChecked
                 type="radio"
@@ -45,7 +32,19 @@ const ReviewHome = ({ review }) => {
                 name="rating-2"
                 className="mask mask-star-2 bg-orange-400"
               />
-            </div> */}
+              <input
+                defaultChecked
+                type="radio"
+                name="rating-2"
+                className="mask mask-star-2 bg-orange-400"
+              />
+              <input
+                defaultChecked
+                type="radio"
+                name="rating-2"
+                className="mask mask-star-2 bg-orange-400"
+              />
+            </div>
           </h2>
           <p className="mt-2 text-gray-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
