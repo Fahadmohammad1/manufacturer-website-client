@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 const Summary = () => {
   return (
     <div className="flex flex-col">
-      <h1 className="text-3xl my-10 text-center font-bold font-serif">
+      <h1 className="text-3xl my-10 text-center font-bold font-serif text-secondary uppercase">
         Take a look to our Business Summary
       </h1>
       <div className="stats shadow">
