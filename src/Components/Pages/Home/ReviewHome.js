@@ -6,7 +6,7 @@ const ReviewHome = ({ review }) => {
       <div className="max-w-md py-4 px-8 bg-white shadow-xl rounded-lg mt-20 border-r-2 border-t-2 border-[#EDAC60]">
         <div className="flex justify-center md:justify-end -mt-16">
           <img
-            className="w-20 h-20 object-cover rounded-full border-2 border-secondary"
+            className="w-20 h-20 object-cover rounded-full border-2 border-primary"
             src={review.image}
             alt=""
           />
@@ -18,31 +18,31 @@ const ReviewHome = ({ review }) => {
                 defaultChecked
                 type="radio"
                 name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
+                className="mask mask-star-2 bg-amber-500"
               />
               <input
                 defaultChecked
                 type="radio"
                 name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
+                className="mask mask-star-2 bg-amber-500"
               />
               <input
                 defaultChecked
                 type="radio"
                 name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
+                className="mask mask-star-2 bg-amber-500"
               />
               <input
                 defaultChecked
                 type="radio"
                 name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
+                className="mask mask-star-2 bg-amber-500"
               />
               <input
                 defaultChecked
                 type="radio"
                 name="rating-2"
-                className="mask mask-star-2 bg-orange-400"
+                className="mask mask-star-2 bg-amber-500"
               />
             </div>
           </h2>

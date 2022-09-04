@@ -21,7 +21,7 @@ const Parts = () => {
       <h2 className="text-2xl uppercase font-bold text-center my-12 text-secondary font-serif">
         parts we provide
       </h2>
-      <div className="grid lg:grid-cols-3 gap-y-10 mb-10">
+      <div className="grid lg:grid-cols-3 gap-10 mb-10">
         {parts.map((part) => (
           <Part part={part} key={part._id}></Part>
         ))}
