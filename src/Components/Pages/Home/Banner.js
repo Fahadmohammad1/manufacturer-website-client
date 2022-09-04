@@ -11,8 +11,14 @@ const Banner = () => {
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl text-secondary font-bold">
+        <div
+          className="max-w-md"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          data-aos-offset="300"
+          data-aos-easing="ease-in-sine"
+        >
+          <h1 className="mb-5 text-5xl text-teal-300 font-bold">
             Stay Updated With New Technology
           </h1>
           <p className="mb-5">

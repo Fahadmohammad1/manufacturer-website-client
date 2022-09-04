@@ -5,7 +5,11 @@ const Part = ({ part }) => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
+      <div
+        className="flex flex-col items-center justify-center max-w-sm mx-auto"
+        data-aos="flip-left"
+        data-aos-duration="1000"
+      >
         <div
           className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
           style={{

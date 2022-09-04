@@ -13,7 +13,7 @@ const Dashboard = () => {
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
         <div className="drawer-content flex flex-col ">
-          <h2 className="text-3xl my-2 text-green-400 font-bold">
+          <h2 className="text-3xl my-2 text-secondary font-bold">
             Welcome to Dashboard
           </h2>
 
