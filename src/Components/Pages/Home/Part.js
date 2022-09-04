@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
 const Part = ({ part }) => {
   const { image, price, name, _id } = part;
   const navigate = useNavigate();
   return (
     <div>
-      <div className="flex flex-col items-center justify-center max-w-sm mx-auto ">
+      <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
         <div
           className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
           style={{
