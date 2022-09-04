@@ -11,7 +11,7 @@ const Part = ({ part }) => {
         data-aos-duration="1000"
       >
         <div
-          className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
+          className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg"
           style={{
             backgroundImage: `url(${image})`,
           }}

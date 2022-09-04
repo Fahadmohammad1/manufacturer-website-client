@@ -12,7 +12,7 @@ const ReviewsHome = () => {
   }
   return (
     <div className="my-14">
-      <h1 className="text-3xl font-bold font-serif my-10 text-center text-secondary uppercase">
+      <h1 className="text-3xl font-bold my-10 text-center text-secondary uppercase">
         Our happy Customers Feedback
       </h1>
       <div className="grid md:grid-cols-3 gap-7 container mx-auto">
