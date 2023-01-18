@@ -8,13 +8,16 @@ const useAdmin = (user) => {
     const email = user?.email;
     if (email) {
       if (email) {
-        fetch(`https://ancient-wave-77953.herokuapp.com/admin/${email}`, {
-          method: "GET",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        })
+        fetch(
+          `https://manufacturer-website-server-gaow.vercel.app/admin/${email}`,
+          {
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             setAdmin(data.admin);

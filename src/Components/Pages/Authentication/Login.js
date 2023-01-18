@@ -40,7 +40,7 @@ const Login = () => {
       };
 
       fetch(
-        `https://ancient-wave-77953.herokuapp.com/user/${gUser?.user?.email}`,
+        `https://manufacturer-website-server-gaow.vercel.app/user/${gUser?.user?.email}`,
         {
           method: "PUT",
           headers: {

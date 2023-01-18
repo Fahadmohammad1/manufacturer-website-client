@@ -14,12 +14,15 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["myOrders", user], () =>
-    fetch(`https://ancient-wave-77953.herokuapp.com/myOrder/${user?.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://manufacturer-website-server-gaow.vercel.app/myOrder/${user?.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         navigate("/");
       }

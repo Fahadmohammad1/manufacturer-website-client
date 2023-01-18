@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch("https://ancient-wave-77953.herokuapp.com/users", {
+    fetch("https://manufacturer-website-server-gaow.vercel.app/users", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

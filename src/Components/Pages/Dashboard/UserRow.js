@@ -4,12 +4,15 @@ import { toast } from "react-toastify";
 const UserRow = ({ user, i, refetch }) => {
   const { email, role } = user;
   const makeAdmin = () => {
-    fetch(`https://ancient-wave-77953.herokuapp.com/user/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://manufacturer-website-server-gaow.vercel.app/user/admin/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 403) {
           toast.error("failed to make an admin");

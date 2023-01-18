@@ -14,9 +14,9 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery(["owner", user], () =>
-    fetch(`https://ancient-wave-77953.herokuapp.com/user/${user?.email}`).then(
-      (res) => res.json()
-    )
+    fetch(
+      `https://manufacturer-website-server-gaow.vercel.app/user/${user?.email}`
+    ).then((res) => res.json())
   );
 
   const {
@@ -40,13 +40,16 @@ const MyProfile = () => {
       linkedIn: data?.link,
     };
     if (user) {
-      fetch(`https://ancient-wave-77953.herokuapp.com/user/${user?.email}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      })
+      fetch(
+        `https://manufacturer-website-server-gaow.vercel.app/user/${user?.email}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }
+      )
         .then((res) => res.json())
         .then((result) => {
           if (result.modifiedCount > 0) {

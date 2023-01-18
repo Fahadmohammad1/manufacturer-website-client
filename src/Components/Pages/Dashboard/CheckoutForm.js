@@ -13,14 +13,17 @@ const CheckoutForm = ({ order }) => {
   const { price, name, email, _id } = order;
 
   useEffect(() => {
-    fetch("https://ancient-wave-77953.herokuapp.com/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://manufacturer-website-server-gaow.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -71,14 +74,17 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
       };
 
-      fetch(`https://ancient-wave-77953.herokuapp.com/order/${_id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(payment),
-      })
+      fetch(
+        `https://manufacturer-website-server-gaow.vercel.app/order/${_id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(payment),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);

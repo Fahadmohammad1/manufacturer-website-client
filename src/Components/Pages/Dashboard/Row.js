@@ -15,9 +15,12 @@ const Row = ({ order, index, refetch }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`https://ancient-wave-77953.herokuapp.com/myOrder/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://manufacturer-website-server-gaow.vercel.app/myOrder/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount === 1) {

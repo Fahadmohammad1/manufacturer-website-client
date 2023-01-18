@@ -26,13 +26,16 @@ const AddReview = () => {
       image: user.photoURL,
     };
     if (user) {
-      fetch(`https://ancient-wave-77953.herokuapp.com/review/${user?.email}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(userReview),
-      })
+      fetch(
+        `https://manufacturer-website-server-gaow.vercel.app/review/${user?.email}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userReview),
+        }
+      )
         .then((res) => res.json())
         .then((result) => {
           if (result.modifiedCount > 0) {

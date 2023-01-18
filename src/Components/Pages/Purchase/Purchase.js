@@ -15,9 +15,9 @@ const Purchase = () => {
 
   const { id } = useParams();
   const { data: part, isLoading } = useQuery("part", () =>
-    fetch(`https://ancient-wave-77953.herokuapp.com/parts/${id}`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `https://manufacturer-website-server-gaow.vercel.app/parts/${id}`
+    ).then((res) => res.json())
   );
   const {
     register,
@@ -43,7 +43,7 @@ const Purchase = () => {
     };
 
     axios
-      .post("https://ancient-wave-77953.herokuapp.com/order", order)
+      .post("https://manufacturer-website-server-gaow.vercel.app/order", order)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Order Successful");

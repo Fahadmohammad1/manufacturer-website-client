@@ -42,13 +42,16 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.Email, data.Password);
     await updateProfile({ displayName: data.name });
-    await fetch(`https://ancient-wave-77953.herokuapp.com/user/${data.Email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    })
+    await fetch(
+      `https://manufacturer-website-server-gaow.vercel.app/user/${data.Email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
