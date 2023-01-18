@@ -22,7 +22,7 @@ const Parts = () => {
         parts we provide
       </h2>
       <div className="grid lg:grid-cols-3 gap-x-10 gap-y-16 mb-10">
-        {parts.map((part) => (
+        {parts?.map((part) => (
           <Part part={part} key={part._id}></Part>
         ))}
       </div>
