@@ -15,7 +15,7 @@ const MyProfile = () => {
     refetch,
   } = useQuery(["owner", user], () =>
     fetch(
-      `https://manufacturer-website-server-gaow.vercel.app/user/${user?.email}`
+      `https://manufacturer-website-server-ashy.vercel.app/user/${user?.email}`
     ).then((res) => res.json())
   );
 
@@ -41,7 +41,7 @@ const MyProfile = () => {
     };
     if (user) {
       fetch(
-        `https://manufacturer-website-server-gaow.vercel.app/user/${user?.email}`,
+        `https://manufacturer-website-server-ashy.vercel.app/user/${user?.email}`,
         {
           method: "PUT",
           headers: {

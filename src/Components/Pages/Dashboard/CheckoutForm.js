@@ -14,7 +14,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     fetch(
-      "https://manufacturer-website-server-gaow.vercel.app/create-payment-intent",
+      "https://manufacturer-website-server-ashy.vercel.app/create-payment-intent",
       {
         method: "POST",
         headers: {
@@ -75,7 +75,7 @@ const CheckoutForm = ({ order }) => {
       };
 
       fetch(
-        `https://manufacturer-website-server-gaow.vercel.app/order/${_id}`,
+        `https://manufacturer-website-server-ashy.vercel.app/order/${_id}`,
         {
           method: "PATCH",
           headers: {

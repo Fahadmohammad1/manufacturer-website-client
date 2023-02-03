@@ -18,7 +18,7 @@ const Payment = () => {
 
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(
-      `https://manufacturer-website-server-gaow.vercel.app/myOrder/order/${id}`,
+      `https://manufacturer-website-server-ashy.vercel.app/myOrder/order/${id}`,
       {
         method: "GET",
         headers: {

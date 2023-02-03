@@ -5,7 +5,7 @@ const UserRow = ({ user, i, refetch }) => {
   const { email, role } = user;
   const makeAdmin = () => {
     fetch(
-      `https://manufacturer-website-server-gaow.vercel.app/user/admin/${email}`,
+      `https://manufacturer-website-server-ashy.vercel.app/user/admin/${email}`,
       {
         method: "PUT",
         headers: {

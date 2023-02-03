@@ -40,7 +40,7 @@ const Login = () => {
       };
 
       fetch(
-        `https://manufacturer-website-server-gaow.vercel.app/user/${gUser?.user?.email}`,
+        `https://manufacturer-website-server-ashy.vercel.app/user/${gUser?.user?.email}`,
         {
           method: "PUT",
           headers: {

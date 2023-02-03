@@ -7,7 +7,7 @@ const Parts = () => {
   //   const [parts, setParts] = useState([]);
 
   const { data: parts, isLoading } = useQuery("parts", () =>
-    fetch("https://manufacturer-website-server-gaow.vercel.app/parts").then(
+    fetch("https://manufacturer-website-server-ashy.vercel.app/parts").then(
       (res) => res.json()
     )
   );

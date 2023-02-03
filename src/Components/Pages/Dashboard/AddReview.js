@@ -27,7 +27,7 @@ const AddReview = () => {
     };
     if (user) {
       fetch(
-        `https://manufacturer-website-server-gaow.vercel.app/review/${user?.email}`,
+        `https://manufacturer-website-server-ashy.vercel.app/review/${user?.email}`,
         {
           method: "PUT",
           headers: {

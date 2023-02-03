@@ -43,7 +43,7 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(data.Email, data.Password);
     await updateProfile({ displayName: data.name });
     await fetch(
-      `https://manufacturer-website-server-gaow.vercel.app/user/${data.Email}`,
+      `https://manufacturer-website-server-ashy.vercel.app/user/${data.Email}`,
       {
         method: "PUT",
         headers: {
