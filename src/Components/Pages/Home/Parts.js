@@ -1,11 +1,8 @@
-// import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading";
 import Part from "./Part";
 
 const Parts = () => {
-  //   const [parts, setParts] = useState([]);
-
   const { data: parts, isLoading } = useQuery("parts", () =>
     fetch("https://manufacturer-website-server-ashy.vercel.app/parts").then(
       (res) => res.json()
