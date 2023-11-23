@@ -15,7 +15,7 @@ const MyOrders = () => {
     refetch,
   } = useQuery(["myOrders", user], () =>
     fetch(
-      `https://manufacturer-website-server-ashy.vercel.app/myOrder/${user?.email}`,
+      `http://localhost:5000/myOrder/${user?.email}`,
       {
         method: "GET",
         headers: {

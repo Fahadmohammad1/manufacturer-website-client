@@ -22,7 +22,7 @@ import ManageAllOrders from "./Components/Pages/Dashboard/ManageAllOrders";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home></Home>} />

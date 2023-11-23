@@ -4,7 +4,7 @@ import Part from "./Part";
 
 const Parts = () => {
   const { data: parts, isLoading } = useQuery("parts", () =>
-    fetch("https://manufacturer-website-server-ashy.vercel.app/parts").then(
+    fetch("http://localhost:5000/parts").then(
       (res) => res.json()
     )
   );

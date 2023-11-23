@@ -16,7 +16,7 @@ const Row = ({ order, index, refetch }) => {
     }).then((willDelete) => {
       if (willDelete) {
         fetch(
-          `https://manufacturer-website-server-ashy.vercel.app/myOrder/${id}`,
+          `http://localhost:5000/myOrder/${id}`,
           {
             method: "DELETE",
           }

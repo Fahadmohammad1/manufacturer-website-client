@@ -33,6 +33,7 @@ const SignUp = () => {
   if (loading || updating || eLoading) {
     return <Loading />;
   }
+
   const newUser = {
     name: eUser?.user?.displayName,
     email: eUser?.user?.email,
@@ -43,7 +44,7 @@ const SignUp = () => {
     await createUserWithEmailAndPassword(data.Email, data.Password);
     await updateProfile({ displayName: data.name });
     await fetch(
-      `https://manufacturer-website-server-ashy.vercel.app/user/${data.Email}`,
+      `http://localhost:5000/user/${data.Email}`,
       {
         method: "PUT",
         headers: {
@@ -65,7 +66,7 @@ const SignUp = () => {
         <div className="relative overflow-hidden md:flex w-1/2 bg-gradient-to-tr from-blue-800 to-purple-700 i justify-around items-center hidden">
           <div>
             <h1 className="text-white font-bold text-4xl font-sans">
-              GoFinance
+              SignUp
             </h1>
             <p className="text-white mt-1">
               Be a member of our community by creating new account

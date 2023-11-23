@@ -16,7 +16,7 @@ const Purchase = () => {
   const { id } = useParams();
   const { data: part, isLoading } = useQuery("part", () =>
     fetch(
-      `https://manufacturer-website-server-ashy.vercel.app/parts/${id}`
+      `http://localhost:5000/parts/${id}`
     ).then((res) => res.json())
   );
   const {
@@ -43,7 +43,7 @@ const Purchase = () => {
     };
 
     axios
-      .post("https://manufacturer-website-server-ashy.vercel.app/order", order)
+      .post("http://localhost:5000/order", order)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Order Successful");

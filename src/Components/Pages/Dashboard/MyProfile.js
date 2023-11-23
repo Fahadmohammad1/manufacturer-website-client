@@ -13,9 +13,9 @@ const MyProfile = () => {
     data: owner,
     isLoading,
     refetch,
-  } = useQuery(["owner", user], () =>
+  } = useQuery(["owner"], () =>
     fetch(
-      `https://manufacturer-website-server-ashy.vercel.app/user/${user?.email}`
+      `http://localhost:5000/user/${user?.email}`
     ).then((res) => res.json())
   );
 
@@ -41,7 +41,7 @@ const MyProfile = () => {
     };
     if (user) {
       fetch(
-        `https://manufacturer-website-server-ashy.vercel.app/user/${user?.email}`,
+        `http://localhost:5000/user/${user?.email}`,
         {
           method: "PUT",
           headers: {
@@ -63,13 +63,15 @@ const MyProfile = () => {
     }
     reset();
   };
+
+
   return (
     <section>
       <h1 className="text-2xl font-bold font-serif">Update Your Profile</h1>
       <div className="lg:flex mx-auto">
         <div className="px-2 mx-auto lg:mx-0 w-full">
           <div className="max-w-sm content-center flex flex-col bg-white mt-[3vh] rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <div className=" h-40 rounded-t-lg bg-contain bg-no-repeat bg-[url(https://www.linkpicture.com/q/Rectangle-6.png)] flex flex-col justify-end pl-20 pr-20 pt-52  max-w-[24rem]">
+            <div className="h-40 rounded-t-lg bg-contain bg-no-repeat bg-[url(https://www.linkpicture.com/q/Rectangle-6.png)] flex flex-col justify-end pl-20 pr-20 pt-52  max-w-[24rem]">
               <img
                 className="w-28 h-28 object-cover  mb-2 z-10 "
                 src={
@@ -81,17 +83,13 @@ const MyProfile = () => {
             </div>
             <div className="flex flex-col  pl-10  pb-10">
               <h1 className="text-3xl text-secondary font-semibold">
-                {owner?.name || "Unknown"}
+                {owner?.name || "Not set"}
               </h1>
               <div className="mt-2 flex items-center">
-                <img
-                  className="w-5"
-                  src="https://www.linkpicture.com/q/image-14_4.png"
-                  alt=""
-                />
-                <h1 className="text-base text-primary ml-5 font-semibold">
+
+                <h4 className="text-base text-primary font-semibold">
                   {owner?.email}
-                </h1>
+                </h4>
               </div>
 
               <div className="mb-2 mt-2">
@@ -162,7 +160,7 @@ const MyProfile = () => {
             </div>
           </div>
         </div>
-        <div className="w-full px-2 mx-auto flex items-center">
+        <div className="w-full px-2 flex items-center">
           <div className="max-w-sm content-center flex flex-col bg-white mt-[3vh] rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 px-4 py-4">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="lg:flex gap-4">

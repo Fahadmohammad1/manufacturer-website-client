@@ -7,7 +7,7 @@ const useToken = (user) => {
     const currentUser = { email: email };
     if (email) {
       fetch(
-        `https://manufacturer-website-server-ashy.vercel.app/user/${email}`,
+        `http://localhost:5000/user/${email}`,
         {
           method: "PUT",
           headers: {

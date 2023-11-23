@@ -9,7 +9,7 @@ const useAdmin = (user) => {
     if (email) {
       if (email) {
         fetch(
-          `https://manufacturer-website-server-ashy.vercel.app/admin/${email}`,
+          `http://localhost:5000/admin/${email}`,
           {
             method: "GET",
             headers: {
