@@ -67,7 +67,7 @@ const MyProfile = () => {
 
   return (
     <section>
-      <h1 className="text-2xl font-bold font-serif">Update Your Profile</h1>
+      <h1 className="text-2xl font-bold font-serif">Profile Information</h1>
       <div className="lg:flex mx-auto">
         <div className="px-2 mx-auto lg:mx-0 w-full">
           <div className="max-w-sm content-center flex flex-col bg-white mt-[3vh] rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -161,8 +161,10 @@ const MyProfile = () => {
           </div>
         </div>
         <div className="w-full px-2 flex items-center">
+
           <div className="max-w-sm content-center flex flex-col bg-white mt-[3vh] rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 px-4 py-4">
             <form onSubmit={handleSubmit(onSubmit)}>
+              <h3 className="text-center text-white my-5 font-bold">Update Here</h3>
               <div className="lg:flex gap-4">
                 <div>
                   <div className="form-control w-full max-w-xs">

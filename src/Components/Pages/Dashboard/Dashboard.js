@@ -12,16 +12,16 @@ const Dashboard = () => {
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
-        <div className="drawer-content flex flex-col ">
+        <div className="drawer-content flex flex-col lg:ml-10 ml-0">
           <h2 className="text-3xl my-2 text-secondary font-bold">
             Welcome to Dashboard
           </h2>
 
           <Outlet />
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side border-r-2">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-72 bg-base-100 text-base-content">
+          <ul className="menu p-4 overflow-y-auto w-56 bg-base-100 text-base-content">
             {!admin && (
               <>
                 <li>

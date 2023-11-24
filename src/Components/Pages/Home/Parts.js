@@ -14,16 +14,16 @@ const Parts = () => {
   }
 
   return (
-    <div>
+    <section >
       <h2 className="text-2xl uppercase font-bold text-center my-12 text-secondary">
         parts we provide
       </h2>
-      <div className="grid lg:grid-cols-3 gap-x-10 gap-y-16 mb-10">
+      <div className="grid lg:grid-cols-3 gap-x-8 px-10 gap-y-16 mb-10">
         {parts?.map((part) => (
           <Part part={part} key={part._id}></Part>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
